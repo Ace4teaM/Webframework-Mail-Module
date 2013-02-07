@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--(C)2010-ID-Informatik-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:template="http://www.webframework.fr/last/xmlns/template" xml:lang="fr" lang="fr" dir="ltr">
+<head>
+        <!-- Title -->
+        <title>Gestionnaire de courriers</title>
+
+        <!-- Navigator Page Id -->
+        <meta http-equiv="wfw.page-id" content="index" /> 
+
+        <!-- meta -->
+        <meta name="description" content="Gestion des courriers électroniques" />
+        <meta name="keywords" content="mail, courrier" />
+        
+        <style type="text/css">
+            fieldset.column{
+                display:inline-block;
+                vertical-align: top;
+                height: 300px;
+            }
+        </style>
+</head>
+
+<!-- Document -->
+<body>
+
+    <h1>Gestionnaire de courriers</h1>
+    <p>....</p>
+    
+    <fieldset>
+        <legend>Etat de la configuration</legend>
+        <ul>
+            <li><strong>Base de données</strong> : -{bdd_status}</li>
+        </ul>
+    </fieldset>
+    
+    <h2>Cas d'utilisation</h2>
+    <p>Implémentation des cas d'utilisation par rôle:</p>
+    <div>
+        <fieldset class="column">
+            <legend>Administrateur</legend>
+            <ul template:action="select" template:path=":default.xml:index">
+                <li template:action="all" template:selector="> page[role=administrator]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
+            </ul>
+        </fieldset>
+
+        <fieldset class="column">
+            <legend>Visiteur</legend>
+            <ul template:action="select" template:path=":default.xml:index">
+                <li template:action="all" template:selector="> page[role=visitor]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
+            </ul>
+        </fieldset>
+
+        <fieldset class="column">
+            <legend>Utilisateur</legend>
+            <ul template:action="select" template:path=":default.xml:index">
+                <li template:action="all" template:selector="> page[role=user]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
+            </ul>
+        </fieldset>
+    </div>
+    
+</body>
+
+</html>

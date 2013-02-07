@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Envoyer un message</title>
+        <!-- Navigator Page Id -->
+        <meta http-equiv="wfw.page-id" content="activate" /> 
+
+    </head>
+    <body>
+        <h1>Envoie d'un message</h1>
+        <p>Ce formulaire vous permet d'envoyer un courrier électronique.</p>
+
+        <fieldset class="result"><legend>-{result}</legend>
+            -{error}<br/>-{message}
+        </fieldset>
+
+        <form action="#" enctype="multipart/form-data" method="post">
+            <fieldset><legend>Message</legend>
+                <div class="wfw_edit_field"><span><label for="txt_to">Adresse de l'expéditeur</label></span><span><input type="text" id="txt_to" name="to" value="-{to}" /></span></div>
+                <div class="wfw_edit_field"><span><label for="txt_from_name">Nom de l'expéditeur</label></span><span><input type="text" id="txt_from_name" name="from_name" value="-{from_name}" /></span></div>
+                <div class="wfw_edit_field"><span><label for="txt_from">Adresse du destinataire</label></span><span><input type="text" id="txt_from" name="from" value="-{from}" /></span></div>
+                <div class="wfw_edit_field"><span><label for="txt_subject">Sujet</label></span><span><input type="text" id="txt_subject" name="subject" value="-{subject}" /></span></div>
+                <div class="wfw_edit_field"><span><label for="txt_msg">Message</label></span><span><textarea id="txt_msg" cols="28" rows="12" name="msg">-{msg}</textarea></span></div>
+                <div class="wfw_edit_field"><span><label for="txt_template">Nom du fichier template</label></span><span><input type="text" id="txt_template" name="template" value="-{template}" /></span></div>
+                <div class="wfw_edit_field"><span><label for="txt_notify">Adresse de notification</label></span><span><input type="text" id="txt_notify" name="notify" value="-{notify}" /></span></div>
+            </fieldset>
+            <fieldset><legend>Serveur</legend>
+                <div class="wfw_edit_field"><span><label for="txt_server">Adresse du serveur</label></span><span><input type="text" id="txt_server" name="server" value="-{server}" /></span></div>
+                <div class="wfw_edit_field"><span><label for="txt_port">Numéro de port</label></span><span><input type="text" id="txt_port" name="port" value="-{port}" /></span></div>
+            </fieldset>
+            <div align="right">
+                <a class="wfw_button_text" href="-{page:index}">Retour</a>
+                <input class="wfw_button_text" type="submit" value="Souscrire" />
+            </div>
+        </form>
+    </body>
+</html>

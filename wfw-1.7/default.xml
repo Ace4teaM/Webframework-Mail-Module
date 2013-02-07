@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <title>Mailling</title>
+    <name>mail_module</name>
+    <base>webframework</base>
+    <description>Gestionnaire de courrier électronique</description>
+    
+    <index>
+        <page id="index" name="Accueil">index.php</page>
+        <!-- admin -->
+        <page id="send_message" role="administrator" name="Envoie un message">send_message.php</page>
+        <!-- visiteur -->
+        <!-- utilisateur -->
+    </index>
+
+    <tree>
+        <index/>
+        <send_message/>
+    </tree>
+    
+    <results lang="fr">
+        <codes>
+            <ERR_OK>Succès</ERR_OK>
+            <ERR_FAILED>Echec</ERR_FAILED>
+            <ERR_SYSTEM>Erreur système</ERR_SYSTEM>
+        </codes>
+
+        <errors>
+            <!-- WFW (ERR_FAILED) -->
+            <NO_INPUT_FIELD>Aucun champ reçu</NO_INPUT_FIELD>
+            <MISSING_FIELD>Champ manquant</MISSING_FIELD>
+            <EMPTY_TEXT>Champ vide</EMPTY_TEXT>
+            <INVALID_CHAR>Champ contenant des caractères interdits</INVALID_CHAR>
+            <INVALID_FORMAT>Champ mal formé</INVALID_FORMAT>
+            <!-- WFW (ERR_SYSTEM) -->
+            <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
+            <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
+            
+            <!-- MAIL (ERR_OK) -->
+            <MAIL_SENDED>Message envoyé</MAIL_SENDED>
+            <!-- MAIL (ERR_FAILED) -->
+            <MAIL_SENDING>Erreur d'envoie</MAIL_SENDING>
+        </errors>
+    </results>
+</site>
