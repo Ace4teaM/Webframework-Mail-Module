@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{02BB10B0-C9F5-4446-8BEB-F2E8776BB46B}" Label="" LastModificationDate="1360225665" Name="mail" Objects="24" Symbols="3" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" signature="LDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{02BB10B0-C9F5-4446-8BEB-F2E8776BB46B}" Label="" LastModificationDate="1360168617" Name="mail" Objects="19" Symbols="2" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" signature="LDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,26 +12,12 @@
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360168555</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225665</a:ModificationDate>
+<a:ModificationDate>1360168565</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {BAE4E1C9-D6AE-4AB2-A789-A45D04ECF55B}
 DAT 1360168558
 ATT FOPT
-ATT MOPT
-DLD {BC30A02D-4B2F-42E7-8925-5E598705AB7E}
-DLD {E36063BE-41EC-4DC1-9E01-ED6129F2A9A8}
-DLD {E2845F2C-08B2-452C-AE00-3971E865D1E9}
-DLD {723BE3BE-9F99-4097-9976-A7961E942AA4}
-DLD {A4C348BF-05FD-4BAB-A552-1286EA25881D}
-DLD {4BC8D1F2-0D52-4398-8794-154D11C95180}
-DLD {29374551-579C-4514-930E-2396262B7C80}
-DLD {D8AFB3B1-BC41-45F7-ACDA-F3DE5DBD14FA}
-DLD {44A6DE9A-DAC2-4A0E-A5BC-AFC45B664AB9}
-DLD {07D0506C-16AD-4207-8863-65EE2F92284B}
-DLD {DE2C0B5F-DF7F-48DB-B2BE-17CD865FAE84}
-DLD {D81AC120-251F-4375-90A1-E90C319799F4}
-DLD {DE12E147-F602-4A71-A119-ECE8A7E97E12}
-DLD {514FD87B-FC0F-46B4-AC29-2C6C274D5914}</a:History>
+ATT MOPT</a:History>
 <a:PackageOptionsText>[FolderOptions]
 
 [FolderOptions\Common]
@@ -685,7 +671,7 @@ CheckModel=Yes
 SaveLinks=Yes
 NameToCode=No
 BuildTrgr=No
-PreserveMode=No</a:ModelOptionsText>
+PreserveMode=Yes</a:ModelOptionsText>
 <c:GeneratedModels>
 <o:Shortcut Id="o3">
 <a:ObjectID>1814BD6F-9F57-4B82-8D77-FC9BD31AE4AF</a:ObjectID>
@@ -705,9 +691,9 @@ PreserveMode=No</a:ModelOptionsText>
 <a:ObjectID>C96FDE6A-58D1-4477-91F9-F587623AD313</a:ObjectID>
 <a:Name>mail</a:Name>
 <a:Code>MAIL</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetStereotype/>
 <a:TargetID>BAE4E1C9-D6AE-4AB2-A789-A45D04ECF55B</a:TargetID>
@@ -716,15 +702,15 @@ PreserveMode=No</a:ModelOptionsText>
 </c:GenerationOrigins>
 <c:LogicalDiagrams>
 <o:LogicalDiagram Id="o5">
-<a:ObjectID>5025AFB6-8D32-4AEB-86C7-DC7F4B15977E</a:ObjectID>
+<a:ObjectID>14D3E673-C4ED-4E88-83D0-F3C29C78545B</a:ObjectID>
 <a:Name>Diagramme_1</a:Name>
 <a:Code>DIAGRAMME_1</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {BC30A02D-4B2F-42E7-8925-5E598705AB7E}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DisplayPreferences>[DisplayPreferences]
 
 [DisplayPreferences\LDM]
@@ -1247,27 +1233,6 @@ Identifiers 0 Arial,8,N</a:FontList>
 <o:Entity Ref="o9"/>
 </c:Object>
 </o:EntitySymbol>
-<o:EntitySymbol Id="o10">
-<a:ModificationDate>1360225665</a:ModificationDate>
-<a:IconMode>-1</a:IconMode>
-<a:Rect>((3267,-9971), (22757,-4203))</a:Rect>
-<a:LineColor>11184640</a:LineColor>
-<a:FillColor>16777136</a:FillColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>STRN 0 Arial,8,N
-DISPNAME 0 Arial,8,N
-Attributes 0 Arial,8,N
-LABL 0 Arial,8,N
-EntityPrimaryAttribute 0 Arial,8,U
-EntityForeignAttribute 0 Arial,8,N
-Identifiers 0 Arial,8,N</a:FontList>
-<a:BrushStyle>6</a:BrushStyle>
-<a:GradientFillMode>65</a:GradientFillMode>
-<a:GradientEndColor>16777215</a:GradientEndColor>
-<c:Object>
-<o:Entity Ref="o11"/>
-</c:Object>
-</o:EntitySymbol>
 </c:Symbols>
 </o:LogicalDiagram>
 </c:LogicalDiagrams>
@@ -1276,267 +1241,195 @@ Identifiers 0 Arial,8,N</a:FontList>
 </c:DefaultDiagram>
 <c:Entities>
 <o:Entity Id="o7">
-<a:ObjectID>72D5C10F-E94A-42CB-A632-A576CEEA348E</a:ObjectID>
+<a:ObjectID>BDF29646-158F-4765-987F-CC4B64C2F2BB</a:ObjectID>
 <a:Name>mail_message</a:Name>
 <a:Code>MAIL_MESSAGE</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {E36063BE-41EC-4DC1-9E01-ED6129F2A9A8}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <c:Attributes>
-<o:EntityAttribute Id="o12">
-<a:ObjectID>11BC90A0-DFE6-42C3-8104-43FC68DE4813</a:ObjectID>
+<o:EntityAttribute Id="o10">
+<a:ObjectID>34C1FF91-64C3-4014-853D-7E53D3426C31</a:ObjectID>
 <a:Name>from</a:Name>
 <a:Code>FROM</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {D8AFB3B1-BC41-45F7-ACDA-F3DE5DBD14FA}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA260</a:DataType>
 <a:Length>260</a:Length>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o13">
-<a:ObjectID>B67D8CD0-CF94-4CA1-87DD-6D090870247A</a:ObjectID>
+<o:EntityAttribute Id="o11">
+<a:ObjectID>E03C2962-1D55-4E75-A9B6-2DBB54DEE40C</a:ObjectID>
 <a:Name>to</a:Name>
 <a:Code>TO</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {29374551-579C-4514-930E-2396262B7C80}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA260</a:DataType>
 <a:Length>260</a:Length>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o14">
-<a:ObjectID>8A369BBE-0607-48DB-A6E0-628C65F68F22</a:ObjectID>
+<o:EntityAttribute Id="o12">
+<a:ObjectID>325E29D7-4C0A-45E1-9637-37EAD74D5FE9</a:ObjectID>
 <a:Name>msg</a:Name>
 <a:Code>MSG</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {4BC8D1F2-0D52-4398-8794-154D11C95180}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>TXT</a:DataType>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o15">
-<a:ObjectID>3751AEAB-B59A-4D32-82B9-DCFFC8091FDE</a:ObjectID>
+<o:EntityAttribute Id="o13">
+<a:ObjectID>0E3FCE4D-6FC2-4AAD-9F15-906600B34CAE</a:ObjectID>
 <a:Name>subject</a:Name>
 <a:Code>SUBJECT</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {A4C348BF-05FD-4BAB-A552-1286EA25881D}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA128</a:DataType>
 <a:Length>128</a:Length>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o16">
-<a:ObjectID>9B39434D-6B6D-4073-8DA8-72595469F9C6</a:ObjectID>
+<o:EntityAttribute Id="o14">
+<a:ObjectID>6D95CF38-B245-4ED1-AFE2-9AA350C0B90C</a:ObjectID>
 <a:Name>from_name</a:Name>
 <a:Code>FROM_NAME</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {723BE3BE-9F99-4097-9976-A7961E942AA4}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA80</a:DataType>
 <a:Length>80</a:Length>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o17">
-<a:ObjectID>D51DDE05-38D8-40BB-AA3C-A4E06FD09945</a:ObjectID>
+<o:EntityAttribute Id="o15">
+<a:ObjectID>72264296-9F87-4579-B86F-F7F374F13143</a:ObjectID>
 <a:Name>notify</a:Name>
 <a:Code>NOTIFY</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {E2845F2C-08B2-452C-AE00-3971E865D1E9}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA260</a:DataType>
 <a:Length>260</a:Length>
 </o:EntityAttribute>
 </c:Attributes>
 </o:Entity>
 <o:Entity Id="o9">
-<a:ObjectID>52F472F8-FA34-462D-9CD4-8D74C238E1D4</a:ObjectID>
+<a:ObjectID>F2AAEBF2-09D5-4F35-BCBB-DD219F86771D</a:ObjectID>
 <a:Name>mail_contact</a:Name>
 <a:Code>MAIL_CONTACT</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {44A6DE9A-DAC2-4A0E-A5BC-AFC45B664AB9}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <c:Identifiers>
-<o:Identifier Id="o18">
-<a:ObjectID>80A4A531-26EE-4339-903E-A206952A21C5</a:ObjectID>
+<o:Identifier Id="o16">
+<a:ObjectID>C88BC882-AAB2-401D-8E14-72E1DD30303E</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {07D0506C-16AD-4207-8863-65EE2F92284B}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <c:Identifier.Attributes>
-<o:EntityAttribute Ref="o19"/>
+<o:EntityAttribute Ref="o17"/>
 </c:Identifier.Attributes>
 </o:Identifier>
 </c:Identifiers>
 <c:PrimaryIdentifier>
-<o:Identifier Ref="o18"/>
+<o:Identifier Ref="o16"/>
 </c:PrimaryIdentifier>
 <c:Attributes>
-<o:EntityAttribute Id="o19">
-<a:ObjectID>7D04F4C2-7147-40AD-B4D3-BC89068417CB</a:ObjectID>
+<o:EntityAttribute Id="o17">
+<a:ObjectID>0D8FAA9E-65CC-4C7A-9484-E094C1C08A52</a:ObjectID>
 <a:Name>mail_contact_id</a:Name>
 <a:Code>MAIL_CONTACT_ID</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {514FD87B-FC0F-46B4-AC29-2C6C274D5914}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>I</a:DataType>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o20">
-<a:ObjectID>BB514967-D42B-4195-9A34-4C4EF954F4BF</a:ObjectID>
+<o:EntityAttribute Id="o18">
+<a:ObjectID>29BA01C1-3E98-4FA6-99E0-DF988E5A1EC1</a:ObjectID>
 <a:Name>mail_address</a:Name>
 <a:Code>MAIL_ADDRESS</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {DE12E147-F602-4A71-A119-ECE8A7E97E12}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA260</a:DataType>
 <a:Length>260</a:Length>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o21">
-<a:ObjectID>7CB617D4-2410-469E-8364-EDBB1C1189C0</a:ObjectID>
+<o:EntityAttribute Id="o19">
+<a:ObjectID>85E8A4D9-2135-424A-B232-9CEFEEC34B98</a:ObjectID>
 <a:Name>firstname</a:Name>
 <a:Code>FIRSTNAME</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {D81AC120-251F-4375-90A1-E90C319799F4}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA80</a:DataType>
 <a:Length>80</a:Length>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o22">
-<a:ObjectID>F93ED698-6A3A-41AA-81AF-D7199108DE5C</a:ObjectID>
+<o:EntityAttribute Id="o20">
+<a:ObjectID>3F8BDDB5-FC68-4264-AFA8-ADFB6D7A5E48</a:ObjectID>
 <a:Name>lastname</a:Name>
 <a:Code>LASTNAME</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
+<a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {DE2C0B5F-DF7F-48DB-B2BE-17CD865FAE84}
-DAT 1360225654</a:History>
+DAT 1360168558</a:History>
 <a:DataType>VA80</a:DataType>
 <a:Length>80</a:Length>
-<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
-</o:EntityAttribute>
-</c:Attributes>
-</o:Entity>
-<o:Entity Id="o11">
-<a:ObjectID>6AD08734-C0BD-4E4C-8A0F-5977F0CD5F6E</a:ObjectID>
-<a:Name>mail_server</a:Name>
-<a:Code>MAIL_SERVER</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:History>ORG {84D7BDA1-685C-4183-99C4-8853E0680DC2}
-DAT 1360225654</a:History>
-<c:Identifiers>
-<o:Identifier Id="o23">
-<a:ObjectID>0330950E-D2D9-4616-A5A7-924C59C47F25</a:ObjectID>
-<a:Name>Identifiant_1</a:Name>
-<a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:History>ORG {723D9EC3-2651-47A8-922A-47F045EF643D}
-DAT 1360225654</a:History>
-<c:Identifier.Attributes>
-<o:EntityAttribute Ref="o24"/>
-</c:Identifier.Attributes>
-</o:Identifier>
-</c:Identifiers>
-<c:PrimaryIdentifier>
-<o:Identifier Ref="o23"/>
-</c:PrimaryIdentifier>
-<c:Attributes>
-<o:EntityAttribute Id="o24">
-<a:ObjectID>D82DABE7-297D-47C0-BCB7-C3286F9D0624</a:ObjectID>
-<a:Name>mail_server_id</a:Name>
-<a:Code>MAIL_SERVER_ID</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:History>ORG {3C2A2519-1931-45C9-A3ED-18EAED68C84B}
-DAT 1360225654</a:History>
-<a:DataType>I</a:DataType>
-<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o25">
-<a:ObjectID>A1BBB75D-1684-49BC-BC72-6751E29BBF9B</a:ObjectID>
-<a:Name>server_adr</a:Name>
-<a:Code>SERVER_ADR</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:History>ORG {241A53B0-D7AF-4B69-9DFC-CCABB99BC9C2}
-DAT 1360225654</a:History>
-<a:DataType>VA128</a:DataType>
-<a:Length>128</a:Length>
-<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o26">
-<a:ObjectID>C8AD07DF-789B-43AD-BCEC-60A52FC89731</a:ObjectID>
-<a:Name>port_num</a:Name>
-<a:Code>PORT_NUM</a:Code>
-<a:CreationDate>1360225654</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:History>ORG {B449C7F3-11C0-42D9-B9AC-606507273684}
-DAT 1360225654</a:History>
-<a:DataType>I</a:DataType>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
 </c:Attributes>
 </o:Entity>
 </c:Entities>
 <c:TargetModels>
-<o:TargetModel Id="o27">
+<o:TargetModel Id="o21">
 <a:ObjectID>DFEDD24C-27DC-4A5C-8F3E-B2DEBA9B6A88</a:ObjectID>
 <a:Name>mail</a:Name>
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360168558</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Webframework Module Mailling/mcd/mail.mcd</a:TargetModelURL>
 <a:TargetModelID>BAE4E1C9-D6AE-4AB2-A789-A45D04ECF55B</a:TargetModelID>
@@ -1545,13 +1438,13 @@ DAT 1360225654</a:History>
 <o:Shortcut Ref="o4"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o28">
+<o:TargetModel Id="o22">
 <a:ObjectID>001BA1B0-1CD9-4AFE-B5D2-20C4924BDAAC</a:ObjectID>
 <a:Name>mail</a:Name>
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360168565</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225665</a:ModificationDate>
+<a:ModificationDate>1360168617</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Webframework Module Mailling/mcd/mail.mpd</a:TargetModelURL>
 <a:TargetModelID>F264F748-2FC1-4203-9947-310553CD4BD9</a:TargetModelID>

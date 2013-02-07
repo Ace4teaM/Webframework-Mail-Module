@@ -32,6 +32,9 @@
             <EMPTY_TEXT>Champ vide</EMPTY_TEXT>
             <INVALID_CHAR>Champ contenant des caractères interdits</INVALID_CHAR>
             <INVALID_FORMAT>Champ mal formé</INVALID_FORMAT>
+            <DB_CONNECTION>Connexion au serveur de base de données a échouée</DB_CONNECTION>
+            <DB_SQL_QUERY>Requête SQL mal formée</DB_SQL_QUERY>
+            <SOCK_OPEN_URL>La connexion au serveur a échouée</SOCK_OPEN_URL>
             <!-- WFW (ERR_SYSTEM) -->
             <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
             <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
@@ -47,6 +50,15 @@
             <INPUT_MSG_INVALID_FIELD>
                 Merci de renseigner le champ: $FIELD_NAME.
             </INPUT_MSG_INVALID_FIELD>
+            <SOCK_SERVER_CONNECTION>
+                Cause retourné par le socket #$ERRNO : $ERRSTR
+                [$SERVER : $PORT]
+            </SOCK_SERVER_CONNECTION>
+            <MAIL_CMD_FAILED>
+                Une commande à retournée une réponse négative.
+                Commande: $CMD
+                Réponse: $RESPONSE
+            </MAIL_CMD_FAILED>
             
             <!-- MAIL -->
         </messages>

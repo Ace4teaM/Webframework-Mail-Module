@@ -32,6 +32,9 @@ require_once("php/xml_default.php");
     
 class MailModule implements iModule
 {
+    const MailSended = "MAIL_SENDED";
+    const MailSending = "MAIL_SENDING";
+    
     /**
      * @brief Initialise le module
      * @param $local_path Chemin d'accès local vers ce dossier
@@ -64,29 +67,32 @@ class MailModule implements iModule
     /** 
      * Envoi un message
      * 
-     * @param type $msg Instance initialisé d'une classe MailMessage
-     * @return Résultat de la procédure
+     * @param MailMessage $msg Instance du message
+     * @param MailServer $server Optionnel, instance du serveur
+     * @return bool Résultat de la procédure
      */
-    public static function sendMessage(MailMessage $msg){ 
+    public static function sendMessage(MailMessage $msg,MailServer $server = NULL){ 
         global $app;
         $db=null;
-    
+        
+        if(!isset($server))
+            $server = new MailServer();
+
         // obtient les infos sur le serveur et l'expediteur par defaut
-        $mail_server = $app->getCfgValue("mail_module","server");
-        $mail_port   = $app->getCfgValue("mail_module","port");
-        $from        = $app->getCfgValue("mail_module","from");
-        $from_name   = $app->getCfgValue("mail_module","from_name");
-    
+        $mail_server = (empty($server->serverAdr) ? $app->getCfgValue("mail_module","server") : $server->serverAdr);
+        $mail_port   = (empty($server->portNum) ? $app->getCfgValue("mail_module","port") : $server->portNum);
+        $from        = (empty($msg->from) ? $app->getCfgValue("mail_module","from") : $msg->from);
+        $from_name   = (empty($msg->from_name) ? $app->getCfgValue("mail_module","from_name") : $msg->from_name);
+
         // sujet
         $subject = '=?UTF-8?B?'.base64_encode($msg->subject).'?=';
         
         // nom de l'expediteur
-        if(!empty($msg->from_name))
-                $from_name = $msg->from_name;
         if(!empty($from_name))
                 $from_name = '=?UTF-8?B?'.base64_encode($from_name).'?=';
 
         // initialise la connexion
+        global $sock;
         $sock = new cSocket();
         $rsp  = "";
 
@@ -115,11 +121,13 @@ class MailModule implements iModule
             global $rsp;
 
             $rsp = $sock->Puts($cmd);
-            //  echo($rsp);
+ //           echo($cmd);
+ //           echo($rsp);
             //verifie le code de retourne, accept les messages 2xx et 3xx. retourne le reste comme erreur
             $code_char = substr($rsp,0,1);
-            if($code_char != "2" && $code_char != "3")
-                    return 0;
+            if($code_char != "2" && $code_char != "3"){
+                return RESULT(cResult::Failed, MailModule::MailSending, array("message"=>"MAIL_CMD_FAILED","cmd"=>$cmd,"response"=>$rsp));
+            }
 
             return $rsp;
         }
@@ -129,10 +137,8 @@ class MailModule implements iModule
         $to = $msg->to;
 
         //ouvre la connection
-        if($sock->Open($mail_server,$mail_port)!=ERR_OK)
-        {
-          return RESULT(cResult::Failed, "MAIL_SOCKET_OPEN", array("errno"=>$sock->errno,"errstr"=>$sock->errstr));
-        }
+        if(!$sock->Open($mail_server,$mail_port))
+            return false; // conserve le resultat
 
         //authentification
         if(!puts("HELO ".(isset($_SERVER['SERVER_ADDR'])?$_SERVER['SERVER_ADDR']:"noname")."\n")) goto onerror;
@@ -172,7 +178,7 @@ class MailModule implements iModule
         // quit 
         $sock->Puts("QUIT\n");
         $sock->Close();
-        return RESULT(cResult::Ok, MailModule::MailSending);
+        return false; // erreur gérée par la fonction Puts()
 
         // OK
         ok:
