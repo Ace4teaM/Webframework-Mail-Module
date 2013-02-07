@@ -41,5 +41,15 @@
             <!-- MAIL (ERR_FAILED) -->
             <MAIL_SENDING>Erreur d'envoie</MAIL_SENDING>
         </errors>
+        
+        <messages>
+            <!-- WFW -->
+            <INPUT_MSG_INVALID_FIELD>
+                Merci de renseigner le champ: $FIELD_NAME.
+            </INPUT_MSG_INVALID_FIELD>
+            
+            <!-- MAIL -->
+        </messages>
+        
     </results>
 </site>
