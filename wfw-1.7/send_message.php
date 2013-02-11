@@ -109,7 +109,7 @@ if(isset($result->att["field_name"]))
     $result->att["field_name"] = MailModule::translateAttributeName($result->att["field_name"]);
 
 // Traduit le résultat
-$att = Application::translateResult($result);
+$att = $app->translateResult($result);
 
 // Ajoute les arguments reçues en entrée au template
 $att = array_merge($att,$_REQUEST);
@@ -125,8 +125,8 @@ switch($format){
         echo xarg_encode_array($att);
         break;
     case "html":
-        //echo $app->makeFormView($att,array("title"=>"Test"));
-        echo $app->makeXMLView("view/mail/pages/send_message.html",$att);
+        echo $app->makeFormView($att,$fields,$optional_fields,$_REQUEST);
+        //echo $app->makeXMLView("view/mail/pages/send_message.html",$att);
         break;
     default:
         RESULT(cResult::Failed,Application::UnsuportedFeature);

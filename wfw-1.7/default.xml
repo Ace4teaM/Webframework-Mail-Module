@@ -63,5 +63,18 @@
             <!-- MAIL -->
         </messages>
         
+        <fields>
+            <!-- MAIL -->
+            <to>Adresse du destinataire</to>
+            <from>Adresse de l'expéditeur</from>
+            <from_name>Nom de l'expéditeur</from_name>
+            <subject>Sujet</subject>
+            <msg>Message</msg>
+            <template>Fichier template</template>
+            <notify>Adresse de notification</notify>
+            <server>Adresse du serveur</server>
+            <port>Numéro de port</port>
+        </fields>
+        
     </results>
 </site>
