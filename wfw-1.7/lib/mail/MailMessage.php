@@ -60,7 +60,12 @@ class MailMessage
     /**
     * @var      String
     */
-    public $notify;    
+    public $notify;
+    
+    /**
+    * @var      String
+    */
+    public $template;    
 
 }
 
@@ -108,7 +113,8 @@ class MailMessageMgr
           $inst->msg = $db->fetchValue($result,"msg");
           $inst->subject = $db->fetchValue($result,"subject");
           $inst->fromName = $db->fetchValue($result,"from_name");
-          $inst->notify = $db->fetchValue($result,"notify");          
+          $inst->notify = $db->fetchValue($result,"notify");
+          $inst->template = $db->fetchValue($result,"template");          
 
           return true;
        }
@@ -139,7 +145,8 @@ class MailMessageMgr
           $inst->msg = $db->fetchValue($result,"msg");
           $inst->subject = $db->fetchValue($result,"subject");
           $inst->fromName = $db->fetchValue($result,"from_name");
-          $inst->notify = $db->fetchValue($result,"notify");          
+          $inst->notify = $db->fetchValue($result,"notify");
+          $inst->template = $db->fetchValue($result,"template");          
 
           return true;
        }

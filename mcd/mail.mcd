@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{BAE4E1C9-D6AE-4AB2-A789-A45D04ECF55B}" Label="" LastModificationDate="1360225654" Name="mail" Objects="35" Symbols="3" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{BAE4E1C9-D6AE-4AB2-A789-A45D04ECF55B}" Label="" LastModificationDate="1360311553" Name="mail" Objects="39" Symbols="3" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,7 +12,7 @@
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360167485</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360311527</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
 
@@ -1249,7 +1249,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Code>MAIL_MESSAGE</a:Code>
 <a:CreationDate>1360167523</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360168189</a:ModificationDate>
+<a:ModificationDate>1360311547</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <c:Attributes>
 <o:EntityAttribute Id="o11">
@@ -1316,6 +1316,16 @@ Identifiers 0 Arial,8,N</a:FontList>
 <o:DataItem Ref="o22"/>
 </c:DataItem>
 </o:EntityAttribute>
+<o:EntityAttribute Id="o23">
+<a:ObjectID>25824C8D-8B37-423B-A91C-6CFE3DFEF532</a:ObjectID>
+<a:CreationDate>1360311509</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1360311527</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<c:DataItem>
+<o:DataItem Ref="o24"/>
+</c:DataItem>
+</o:EntityAttribute>
 </c:Attributes>
 </o:Entity>
 <o:Entity Id="o8">
@@ -1327,7 +1337,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1360167789</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <c:Identifiers>
-<o:Identifier Id="o23">
+<o:Identifier Id="o25">
 <a:ObjectID>07D0506C-16AD-4207-8863-65EE2F92284B</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
@@ -1336,27 +1346,16 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1360167789</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <c:Identifier.Attributes>
-<o:EntityAttribute Ref="o24"/>
+<o:EntityAttribute Ref="o26"/>
 </c:Identifier.Attributes>
 </o:Identifier>
 </c:Identifiers>
 <c:PrimaryIdentifier>
-<o:Identifier Ref="o23"/>
+<o:Identifier Ref="o25"/>
 </c:PrimaryIdentifier>
 <c:Attributes>
-<o:EntityAttribute Id="o24">
-<a:ObjectID>514FD87B-FC0F-46B4-AC29-2C6C274D5914</a:ObjectID>
-<a:CreationDate>1360167682</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360167789</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o25"/>
-</c:DataItem>
-</o:EntityAttribute>
 <o:EntityAttribute Id="o26">
-<a:ObjectID>DE12E147-F602-4A71-A119-ECE8A7E97E12</a:ObjectID>
+<a:ObjectID>514FD87B-FC0F-46B4-AC29-2C6C274D5914</a:ObjectID>
 <a:CreationDate>1360167682</a:CreationDate>
 <a:Creator>developpement</a:Creator>
 <a:ModificationDate>1360167789</a:ModificationDate>
@@ -1367,7 +1366,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 </c:DataItem>
 </o:EntityAttribute>
 <o:EntityAttribute Id="o28">
-<a:ObjectID>D81AC120-251F-4375-90A1-E90C319799F4</a:ObjectID>
+<a:ObjectID>DE12E147-F602-4A71-A119-ECE8A7E97E12</a:ObjectID>
 <a:CreationDate>1360167682</a:CreationDate>
 <a:Creator>developpement</a:Creator>
 <a:ModificationDate>1360167789</a:ModificationDate>
@@ -1378,7 +1377,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 </c:DataItem>
 </o:EntityAttribute>
 <o:EntityAttribute Id="o30">
-<a:ObjectID>DE2C0B5F-DF7F-48DB-B2BE-17CD865FAE84</a:ObjectID>
+<a:ObjectID>D81AC120-251F-4375-90A1-E90C319799F4</a:ObjectID>
 <a:CreationDate>1360167682</a:CreationDate>
 <a:Creator>developpement</a:Creator>
 <a:ModificationDate>1360167789</a:ModificationDate>
@@ -1386,6 +1385,17 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
 <c:DataItem>
 <o:DataItem Ref="o31"/>
+</c:DataItem>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o32">
+<a:ObjectID>DE2C0B5F-DF7F-48DB-B2BE-17CD865FAE84</a:ObjectID>
+<a:CreationDate>1360167682</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1360167789</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
+<c:DataItem>
+<o:DataItem Ref="o33"/>
 </c:DataItem>
 </o:EntityAttribute>
 </c:Attributes>
@@ -1399,7 +1409,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1360225569</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <c:Identifiers>
-<o:Identifier Id="o32">
+<o:Identifier Id="o34">
 <a:ObjectID>723D9EC3-2651-47A8-922A-47F045EF643D</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
@@ -1408,27 +1418,16 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1360225569</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <c:Identifier.Attributes>
-<o:EntityAttribute Ref="o33"/>
+<o:EntityAttribute Ref="o35"/>
 </c:Identifier.Attributes>
 </o:Identifier>
 </c:Identifiers>
 <c:PrimaryIdentifier>
-<o:Identifier Ref="o32"/>
+<o:Identifier Ref="o34"/>
 </c:PrimaryIdentifier>
 <c:Attributes>
-<o:EntityAttribute Id="o33">
-<a:ObjectID>3C2A2519-1931-45C9-A3ED-18EAED68C84B</a:ObjectID>
-<a:CreationDate>1360225499</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225569</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o34"/>
-</c:DataItem>
-</o:EntityAttribute>
 <o:EntityAttribute Id="o35">
-<a:ObjectID>241A53B0-D7AF-4B69-9DFC-CCABB99BC9C2</a:ObjectID>
+<a:ObjectID>3C2A2519-1931-45C9-A3ED-18EAED68C84B</a:ObjectID>
 <a:CreationDate>1360225499</a:CreationDate>
 <a:Creator>developpement</a:Creator>
 <a:ModificationDate>1360225569</a:ModificationDate>
@@ -1439,7 +1438,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 </c:DataItem>
 </o:EntityAttribute>
 <o:EntityAttribute Id="o37">
-<a:ObjectID>B449C7F3-11C0-42D9-B9AC-606507273684</a:ObjectID>
+<a:ObjectID>241A53B0-D7AF-4B69-9DFC-CCABB99BC9C2</a:ObjectID>
 <a:CreationDate>1360225499</a:CreationDate>
 <a:Creator>developpement</a:Creator>
 <a:ModificationDate>1360225569</a:ModificationDate>
@@ -1447,6 +1446,17 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
 <c:DataItem>
 <o:DataItem Ref="o38"/>
+</c:DataItem>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o39">
+<a:ObjectID>B449C7F3-11C0-42D9-B9AC-606507273684</a:ObjectID>
+<a:CreationDate>1360225499</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1360225569</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
+<c:DataItem>
+<o:DataItem Ref="o40"/>
 </c:DataItem>
 </o:EntityAttribute>
 </c:Attributes>
@@ -1485,7 +1495,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Modifier>developpement</a:Modifier>
 <a:DataType>TXT</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o25">
+<o:DataItem Id="o27">
 <a:ObjectID>4C2DA6A1-3AF8-420B-8E0D-13412B2D5517</a:ObjectID>
 <a:Name>mail_contact_id</a:Name>
 <a:Code>MAIL_CONTACT_ID</a:Code>
@@ -1495,7 +1505,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Modifier>developpement</a:Modifier>
 <a:DataType>I</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o27">
+<o:DataItem Id="o29">
 <a:ObjectID>B5E25CD6-CB9E-45E2-8800-8CA2951AC6B7</a:ObjectID>
 <a:Name>mail_address</a:Name>
 <a:Code>MAIL_ADDRESS</a:Code>
@@ -1506,7 +1516,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:DataType>VA260</a:DataType>
 <a:Length>260</a:Length>
 </o:DataItem>
-<o:DataItem Id="o29">
+<o:DataItem Id="o31">
 <a:ObjectID>9901757F-2B52-4490-9B22-2B438267DF25</a:ObjectID>
 <a:Name>firstname</a:Name>
 <a:Code>FIRSTNAME</a:Code>
@@ -1517,7 +1527,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:DataType>VA80</a:DataType>
 <a:Length>80</a:Length>
 </o:DataItem>
-<o:DataItem Id="o31">
+<o:DataItem Id="o33">
 <a:ObjectID>6179C25D-BC98-48CF-BE5A-8D78F90D361B</a:ObjectID>
 <a:Name>lastname</a:Name>
 <a:Code>LASTNAME</a:Code>
@@ -1561,7 +1571,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:DataType>VA260</a:DataType>
 <a:Length>260</a:Length>
 </o:DataItem>
-<o:DataItem Id="o34">
+<o:DataItem Id="o36">
 <a:ObjectID>1448426B-B439-4CF0-A856-68146F085FC8</a:ObjectID>
 <a:Name>mail_server_id</a:Name>
 <a:Code>MAIL_SERVER_ID</a:Code>
@@ -1571,7 +1581,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Modifier>developpement</a:Modifier>
 <a:DataType>I</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o36">
+<o:DataItem Id="o38">
 <a:ObjectID>8D84194E-2E26-4F92-BFC6-102E91D88D82</a:ObjectID>
 <a:Name>server_adr</a:Name>
 <a:Code>SERVER_ADR</a:Code>
@@ -1582,7 +1592,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:DataType>VA128</a:DataType>
 <a:Length>128</a:Length>
 </o:DataItem>
-<o:DataItem Id="o38">
+<o:DataItem Id="o40">
 <a:ObjectID>E5F3D443-035D-4B72-B243-A5B69986008E</a:ObjectID>
 <a:Name>port_num</a:Name>
 <a:Code>PORT_NUM</a:Code>
@@ -1592,15 +1602,35 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Modifier>developpement</a:Modifier>
 <a:DataType>I</a:DataType>
 </o:DataItem>
+<o:DataItem Id="o24">
+<a:ObjectID>C9460276-F79C-4515-9AD7-EC51556F3F47</a:ObjectID>
+<a:Name>template</a:Name>
+<a:Code>TEMPLATE</a:Code>
+<a:CreationDate>1360311509</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1360311527</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:DataType>VA260</a:DataType>
+<a:Length>260</a:Length>
+</o:DataItem>
+<o:DataItem Id="o41">
+<a:ObjectID>5238A1AB-6709-44AC-9EAC-DAE7C029836C</a:ObjectID>
+<a:Name>Attribut_15</a:Name>
+<a:Code>ATTRIBUT_15</a:Code>
+<a:CreationDate>1360311509</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1360311547</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+</o:DataItem>
 </c:DataItems>
 <c:TargetModels>
-<o:TargetModel Id="o39">
+<o:TargetModel Id="o42">
 <a:ObjectID>532EBD0B-C508-4303-A0AA-B4FE6F473523</a:ObjectID>
 <a:Name>mail</a:Name>
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360168558</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360225654</a:ModificationDate>
+<a:ModificationDate>1360311553</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Webframework Module Mailling/mcd/mail.mld</a:TargetModelURL>
 <a:TargetModelID>02BB10B0-C9F5-4446-8BEB-F2E8776BB46B</a:TargetModelID>

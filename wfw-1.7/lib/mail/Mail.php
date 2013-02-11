@@ -34,6 +34,7 @@ class MailModule implements iModule
 {
     const MailSended = "MAIL_SENDED";
     const MailSending = "MAIL_SENDING";
+    const LoadTemplate = "CANT_LOAD_TEMPLATE";
     
     /**
      * @brief Initialise le module
@@ -74,22 +75,14 @@ class MailModule implements iModule
     public static function sendMessage(MailMessage $msg,MailServer $server = NULL){ 
         global $app;
         $db=null;
-        
-        if(!isset($server))
-            $server = new MailServer();
-
-        // obtient les infos sur le serveur et l'expediteur par defaut
-        $mail_server = (empty($server->serverAdr) ? $app->getCfgValue("mail_module","server") : $server->serverAdr);
-        $mail_port   = (empty($server->portNum) ? $app->getCfgValue("mail_module","port") : $server->portNum);
-        $from        = (empty($msg->from) ? $app->getCfgValue("mail_module","from") : $msg->from);
-        $from_name   = (empty($msg->from_name) ? $app->getCfgValue("mail_module","from_name") : $msg->from_name);
 
         // sujet
         $subject = '=?UTF-8?B?'.base64_encode($msg->subject).'?=';
         
         // nom de l'expediteur
-        if(!empty($from_name))
-                $from_name = '=?UTF-8?B?'.base64_encode($from_name).'?=';
+        $from_name = "";
+        if(!empty($msg->from_name))
+                $from_name = '=?UTF-8?B?'.base64_encode($msg->from_name).'?=';
 
         // initialise la connexion
         global $sock;
@@ -101,18 +94,26 @@ class MailModule implements iModule
 
         $content = "";
         $content_type = "text/plain";
-        /*if($msg->use_template && !empty($msg->template) && $msg->html_mode))
-        {
-            //transforme le document 
-            $template = new cXMLTemplate();
-            if(!$template->Initialise(ROOT_PATH."/private/".$_REQUEST['template'],NULL,NULL,NULL,$_REQUEST))
-                    rpost_result(ERR_FAILED,"cant_load_template");
-            $content = $template->Make();
-            $content_type = "text/html";
+        $template_path = $app->getCfgValue("mail_module","template_path")."/".$msg->template;
+        $template_type = mime_content_type( $template_path );
+        switch($template_type){
+            //HTML
+            case "text/html":
+                //transforme le document 
+                $template = new cXMLTemplate();
+                if(!$template->Initialise($template_path,NULL,NULL,NULL,$_REQUEST))
+                        RESULT(cResult::Failed,MailModule::LoadTemplate);
+                $content = $template->Make();
+                $content_type = "text/html";
+                break;
+            //TEXT
+            default:
+                $content_type = "text/plain";
+                $content = $msg->msg;
+                break;
         }
-        else*/
-            $content = $msg->msg;
 
+        //--------------------------------------------------------------
         // puts
         // envoie une commande et verifie si c'est un succees, dans le cas echeant prepare la fin de la communication avec le socket
         //
@@ -137,14 +138,14 @@ class MailModule implements iModule
         $to = $msg->to;
 
         //ouvre la connection
-        if(!$sock->Open($mail_server,$mail_port))
+        if(!$sock->Open($server->serverAdr,$server->portNum))
             return false; // conserve le resultat
 
         //authentification
         if(!puts("HELO ".(isset($_SERVER['SERVER_ADDR'])?$_SERVER['SERVER_ADDR']:"noname")."\n")) goto onerror;
 
         //expediteur
-        if(!puts('MAIL FROM: <'.$from.">\n")) goto onerror;
+        if(!puts('MAIL FROM: <'.$msg->from.">\n")) goto onerror;
 
         //destinataire
         if(!puts("RCPT TO: <$to>\n")) goto onerror;
@@ -153,19 +154,19 @@ class MailModule implements iModule
         if(!puts("DATA\n")) goto onerror;
 
         //construit et envoie le corps du message     
-        $msg = "";
-        $msg .= 'Content-Type: '.$content_type.'; charset=UTF-8'."\n";
-        $msg .= 'Content-Transfer-Encoding: 8bit'."\n";
-        $msg .= "To: $to\n";
+        $data = "";
+        $data .= 'Content-Type: '.$content_type.'; charset=UTF-8'."\n";
+        $data .= 'Content-Transfer-Encoding: 8bit'."\n";
+        $data .= "To: $to\n";
         if(!empty($from_name))
-          $msg .= 'From: "'.$from_name.'" <'.$from.">\n"; 
+          $data .= 'From: "'.$from_name.'" <'.$from.">\n"; 
         else
-          $msg .= 'From: '.$from."\n";
-        $msg .= 'Subject: '.$subject."\n";
-        $msg .= "\n";
-        $msg .= $content."\n";
-        $msg .= "\r\n.\r\n"; // fin de corps du message
-        if(!puts($msg)) goto onerror;
+          $data .= 'From: '.$msg->from."\n";
+        $data .= 'Subject: '.$subject."\n";
+        $data .= "\n";
+        $data .= $content."\n";
+        $data .= "\r\n.\r\n"; // fin de corps du message
+        if(!puts($data)) goto onerror;
 
         // quit 
         $sock->Puts("QUIT\n");

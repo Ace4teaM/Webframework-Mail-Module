@@ -5,6 +5,7 @@
         <!-- Navigator Page Id -->
         <meta http-equiv="wfw.page-id" content="activate" /> 
 
+        <script type="text/javascript" src="js/send_message.js"></script>
     </head>
     <body>
         <h1>Envoie d'un message</h1>
@@ -14,6 +15,10 @@
             -{txt_error}<br/>-{txt_message}
         </fieldset>
 
+        <form action="#" enctype="multipart/form-data" method="post">
+            <div id="inputs"></div>
+        </form>
+        
         <form action="#" enctype="multipart/form-data" method="post">
             <fieldset><legend>Message</legend>
                 <div class="wfw_edit_field"><span><label for="txt_from">Adresse de l'expéditeur</label></span><span><input type="text" id="txt_from" name="from" value="-{from}" /></span></div>

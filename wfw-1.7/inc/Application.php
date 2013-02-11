@@ -1,5 +1,12 @@
 <?php
 
+class FormField
+{
+    public $title;
+    public $format;
+    public $value;
+}
+
 /**
  * @brief Interface principale avec l'application 
  */
@@ -229,6 +236,31 @@ class Application /*extends cApplication*/{
 
         //transforme le fichier
 	return $template->Make();
+    }
+    
+    /**
+     * @brief Fabrique une vue de formulaire
+     * @param $filename Chemin d'accès au fichier template (relatif à la racine du site)
+     * @param $select Document XML de sélection en entrée (voir cXMLTemplate::Initialise)
+     * @param $attributes Tableau associatif des champs en entrée (voir cXMLTemplate::Initialise)
+     * @return string Contenu du template transformé
+     */
+    function makeFormView($fields,$template_file="view/form.html"){ 
+
+        $template_content = file_get_contents($this->root_path.'/'.$template_file);
+        $att=array(
+            //champs...
+            "field"=>function($content){
+                $insert = "";
+                foreach($fields as $key=>$obj)
+                    $insert .= cHTMLTemplate::transform($content,$fields);
+                return $insert;
+            }
+        );
+        //transforme le fichier
+	return cHTMLTemplate::transform($template_content,$att);
+        
+       // return makeXMLView("tmp_file.html");
     }
     
     /**

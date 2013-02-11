@@ -62,6 +62,10 @@ if(!isset($_REQUEST["server"]))
 if(!isset($_REQUEST["port"]))
     $_REQUEST["port"]  = $app->getCfgValue("mail_module","port");
     
+//champs par défauts
+if(!isset($_REQUEST["template"]))
+    $_REQUEST["template"]  = $app->getCfgValue("mail_module","template");
+    
 //résultat de la requete
 $result = NULL;
 
@@ -75,6 +79,7 @@ if(cInputFields::checkArray($fields, $optional_fields))
     $msg->msg      = $_REQUEST["msg"];
     $msg->from     = $_REQUEST["from"];
     $msg->fromName = $_REQUEST["from_name"];
+    $msg->template = $_REQUEST["template"];
     $msg->notify   = isset($_REQUEST["notify"]) ? $_REQUEST["notify"] : NULL;
  
     //initialise l'objet MailServer
@@ -120,6 +125,7 @@ switch($format){
         echo xarg_encode_array($att);
         break;
     case "html":
+        //echo $app->makeFormView($att,array("title"=>"Test"));
         echo $app->makeXMLView("view/mail/pages/send_message.html",$att);
         break;
     default:
