@@ -126,7 +126,6 @@ switch($format){
         break;
     case "html":
         echo $app->makeFormView($att,$fields,$optional_fields,$_REQUEST);
-        //echo $app->makeXMLView("view/mail/pages/send_message.html",$att);
         break;
     default:
         RESULT(cResult::Failed,Application::UnsuportedFeature);
