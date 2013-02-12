@@ -13,54 +13,19 @@
         <!-- meta -->
         <meta name="description" content="Gestion des courriers électroniques" />
         <meta name="keywords" content="mail, courrier" />
-        
-        <style type="text/css">
-            fieldset.column{
-                display:inline-block;
-                vertical-align: top;
-                height: 300px;
-            }
-        </style>
 </head>
 
 <!-- Document -->
 <body>
 
     <h1>Gestionnaire de courriers</h1>
-    <p>....</p>
+    <p>Ce module vous permet d'intégre des fonctionnalités de gestion des courriers électroniques à votre site Web.</p>
     
-    <fieldset>
-        <legend>Etat de la configuration</legend>
-        <ul>
-            <li><strong>Base de données</strong> : -{bdd_status}</li>
-        </ul>
-    </fieldset>
-    
-    <h2>Cas d'utilisation</h2>
-    <p>Implémentation des cas d'utilisation par rôle:</p>
-    <div>
-        <fieldset class="column">
-            <legend>Administrateur</legend>
-            <ul template:action="select" template:path=":default.xml:index">
-                <li template:action="all" template:selector="> page[role=administrator]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
-            </ul>
-        </fieldset>
+    <h2>Etat de la configuration</h2>
+    <ul>
+        <li><strong>Base de données</strong> : -{bdd_status}</li>
+    </ul>
 
-        <fieldset class="column">
-            <legend>Visiteur</legend>
-            <ul template:action="select" template:path=":default.xml:index">
-                <li template:action="all" template:selector="> page[role=visitor]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
-            </ul>
-        </fieldset>
-
-        <fieldset class="column">
-            <legend>Utilisateur</legend>
-            <ul template:action="select" template:path=":default.xml:index">
-                <li template:action="all" template:selector="> page[role=user]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
-            </ul>
-        </fieldset>
-    </div>
-    
 </body>
 
 </html>
