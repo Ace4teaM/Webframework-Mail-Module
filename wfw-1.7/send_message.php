@@ -29,6 +29,10 @@
 require_once("inc/globals.php");
 global $app;
 
+//résultat de la requete
+RESULT_OK();
+$result = cResult::getLast();
+
 //requis
 $fields = array(
     'to'=>'cInputMail',
@@ -46,61 +50,59 @@ $optional_fields = array(
     'template'=>'cInputUNIXFileName',    
 );
 
-//champs par défauts
-if(!isset($_REQUEST["from"]))
-    $_REQUEST["from"]  = $app->getCfgValue("mail_module","from");
-    
-//champs par défauts
-if(!isset($_REQUEST["from_name"]))
-    $_REQUEST["from_name"]  = $app->getCfgValue("mail_module","from_name");
+if(!empty($_REQUEST)){
 
-//champs par défauts
-if(!isset($_REQUEST["server"]))
-    $_REQUEST["server"]  = $app->getCfgValue("mail_module","server");
+    //champs par défauts
+    if(!isset($_REQUEST["from"]))
+        $_REQUEST["from"]  = $app->getCfgValue("mail_module","from");
 
-//champs par défauts
-if(!isset($_REQUEST["port"]))
-    $_REQUEST["port"]  = $app->getCfgValue("mail_module","port");
-    
-//champs par défauts
-if(!isset($_REQUEST["template"]))
-    $_REQUEST["template"]  = $app->getCfgValue("mail_module","template");
-    
-//résultat de la requete
-$result = NULL;
+    //champs par défauts
+    if(!isset($_REQUEST["from_name"]))
+        $_REQUEST["from_name"]  = $app->getCfgValue("mail_module","from_name");
 
-// exemples JS
-if(cInputFields::checkArray($fields, $optional_fields))
-{
-    //initialise l'objet MailMessage
-    $msg = new MailMessage();
-    $msg->to       = $_REQUEST["to"];
-    $msg->subject  = $_REQUEST["subject"];
-    $msg->msg      = $_REQUEST["msg"];
-    $msg->from     = $_REQUEST["from"];
-    $msg->fromName = $_REQUEST["from_name"];
-    $msg->template = $_REQUEST["template"];
-    $msg->notify   = isset($_REQUEST["notify"]) ? $_REQUEST["notify"] : NULL;
- 
-    //initialise l'objet MailServer
-    $server = new MailServer();
-    $server->serverAdr = $_REQUEST["server"];
-    $server->portNum   = $_REQUEST["port"];
-    
-    //envoie le message
-    if(!MailModule::sendMessage($msg,$server))
-        goto failed;
+    //champs par défauts
+    if(!isset($_REQUEST["server"]))
+        $_REQUEST["server"]  = $app->getCfgValue("mail_module","server");
 
-    //retourne le resultat de cette fonction
-    $result = cResult::getLast();
+    //champs par défauts
+    if(!isset($_REQUEST["port"]))
+        $_REQUEST["port"]  = $app->getCfgValue("mail_module","port");
 
-    goto success;  
+    //champs par défauts
+    if(!isset($_REQUEST["template"]))
+        $_REQUEST["template"]  = $app->getCfgValue("mail_module","template");
+
+    // exemples JS
+    if(cInputFields::checkArray($fields, $optional_fields))
+    {
+        //initialise l'objet MailMessage
+        $msg = new MailMessage();
+        $msg->to       = $_REQUEST["to"];
+        $msg->subject  = $_REQUEST["subject"];
+        $msg->msg      = $_REQUEST["msg"];
+        $msg->from     = $_REQUEST["from"];
+        $msg->fromName = $_REQUEST["from_name"];
+        $msg->template = $_REQUEST["template"];
+        $msg->notify   = isset($_REQUEST["notify"]) ? $_REQUEST["notify"] : NULL;
+
+        //initialise l'objet MailServer
+        $server = new MailServer();
+        $server->serverAdr = $_REQUEST["server"];
+        $server->portNum   = $_REQUEST["port"];
+
+        //envoie le message
+        if(!MailModule::sendMessage($msg,$server))
+            goto failed;
+
+        //retourne le resultat de cette fonction
+        $result = cResult::getLast();
+    }
 }
 
+goto success;
 failed:
 // redefinit le resultat avec l'erreur en cours
 $result = cResult::getLast();
-
 
 success:
 

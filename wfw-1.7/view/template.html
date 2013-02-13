@@ -32,7 +32,7 @@
     <script type="text/javascript" language="javascript" src="-{_LIB_PATH_WFW_}/javascript/yui/yui_config.js"></script>
     <script type="text/javascript">var wfw_yui_base_path = "-{_LIB_PATH_WFW_}/javascript/yui/";</script>
     <script type="text/javascript" language="javascript" src="js/init.js"></script>
-    
+
     <!-- Add-Includes
     <script type="text/javascript" language="javascript" src="js/user/user.js"></script>
     <script type="text/javascript" language="javascript" src="js/globals.js"></script>
@@ -42,6 +42,14 @@
         #headerContent{
             padding:10px;
             font-weight: bold;
+            text-align: center;
+        }
+        #statusContent{
+            padding:20px;
+        }
+        #statusContent li strong{
+            width:150px;
+            display: inline-block;
         }
         #footerContent{
             padding:10px;
@@ -60,12 +68,33 @@
         #contentContent {
             padding:8px;
         }
+        strong {
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <!-- Document -->
 <body>
-    <div id="header"><div id="headerContent">Webframework 1.7<br/>Module Mailling</div></div>
+    <div id="header">
+        <div id="headerContent">
+            <img src="-{_LIB_PATH_WFW_}/bin/logo.png" height="40" />
+            <hr/>
+            <span><a href="-{page:index}">Module Mailling</a></span>
+        </div>
+    </div>
+    <div id="status" class="wfw_bg_frame">
+        <div id="statusContent">
+            <ul>
+                <li><strong>Base de données</strong> : -{bdd_status}</li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="result">
+        <p><strong>-{txt_result}</strong></p>
+        <p>-{txt_error}<br/>-{txt_message}</p>
+    </div>
     <div id="menu">
         <!-- Administrateur -->
         <ul id="menu1" template:action="select" template:path=":default.xml:index">
@@ -81,7 +110,7 @@
         </ul>
     </div>
     <div id="content"><div id="contentContent" template:action="merge" template:path=">body"></div></div>
-    <div id="footer"><div id="footerContent">Exemple d'implémentation du module Mailling dans un environnement Webframework</div></div>
+    <div id="footer" class="wfw_information"><div id="footerContent">Exemple d'implémentation du module Mailling dans un environnement Webframework</div></div>
 </body>
 
 
