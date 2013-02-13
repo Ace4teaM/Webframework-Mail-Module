@@ -26,6 +26,8 @@
         </codes>
 
         <errors>
+            <!-- WFW (ERR_OK) -->
+            <INFORMATION>Information</INFORMATION>
             <!-- WFW (ERR_FAILED) -->
             <NO_INPUT_FIELD>Aucun champ reçu</NO_INPUT_FIELD>
             <MISSING_FIELD>Champ manquant</MISSING_FIELD>
@@ -54,13 +56,16 @@
                 Cause retourné par le socket #$ERRNO : $ERRSTR
                 [$SERVER : $PORT]
             </SOCK_SERVER_CONNECTION>
+            <WFW_MSG_POPULATE_FORM>
+                Merci de compléter le formulaire
+            </WFW_MSG_POPULATE_FORM>
+            
+            <!-- MAIL -->
             <MAIL_CMD_FAILED>
                 Une commande à retournée une réponse négative.
                 Commande: $CMD
                 Réponse: $RESPONSE
             </MAIL_CMD_FAILED>
-            
-            <!-- MAIL -->
         </messages>
         
         <fields>

@@ -30,7 +30,7 @@ require_once("inc/globals.php");
 global $app;
 
 //résultat de la requete
-RESULT_OK();
+RESULT(cResult::Ok,cApplication::Information,array("message"=>"WFW_MSG_POPULATE_FORM"));
 $result = cResult::getLast();
 
 //requis
@@ -73,30 +73,30 @@ if(!empty($_REQUEST)){
         $_REQUEST["template"]  = $app->getCfgValue("mail_module","template");
 
     // exemples JS
-    if(cInputFields::checkArray($fields, $optional_fields))
-    {
-        //initialise l'objet MailMessage
-        $msg = new MailMessage();
-        $msg->to       = $_REQUEST["to"];
-        $msg->subject  = $_REQUEST["subject"];
-        $msg->msg      = $_REQUEST["msg"];
-        $msg->from     = $_REQUEST["from"];
-        $msg->fromName = $_REQUEST["from_name"];
-        $msg->template = $_REQUEST["template"];
-        $msg->notify   = isset($_REQUEST["notify"]) ? $_REQUEST["notify"] : NULL;
+    if(!cInputFields::checkArray($fields, $optional_fields))
+        goto failed;
+    
+    //initialise l'objet MailMessage
+    $msg = new MailMessage();
+    $msg->to       = $_REQUEST["to"];
+    $msg->subject  = $_REQUEST["subject"];
+    $msg->msg      = $_REQUEST["msg"];
+    $msg->from     = $_REQUEST["from"];
+    $msg->fromName = $_REQUEST["from_name"];
+    $msg->template = $_REQUEST["template"];
+    $msg->notify   = isset($_REQUEST["notify"]) ? $_REQUEST["notify"] : NULL;
 
-        //initialise l'objet MailServer
-        $server = new MailServer();
-        $server->serverAdr = $_REQUEST["server"];
-        $server->portNum   = $_REQUEST["port"];
+    //initialise l'objet MailServer
+    $server = new MailServer();
+    $server->serverAdr = $_REQUEST["server"];
+    $server->portNum   = $_REQUEST["port"];
 
-        //envoie le message
-        if(!MailModule::sendMessage($msg,$server))
-            goto failed;
+    //envoie le message
+    if(!MailModule::sendMessage($msg,$server))
+        goto failed;
 
-        //retourne le resultat de cette fonction
-        $result = cResult::getLast();
-    }
+    //retourne le resultat de la dernière fonction
+    $result = cResult::getLast();
 }
 
 goto success;
