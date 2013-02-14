@@ -75,6 +75,13 @@ class MailModule implements iModule
     public static function sendMessage(MailMessage $msg,MailServer $server = NULL){ 
         global $app;
         $db=null;
+        
+        //server par defaut ?
+        if($server === NULL){
+            $server = new MailServer();
+            $server->serverAdr = $app->getCfgValue("mail_module","server");
+            $server->portNum   = $app->getCfgValue("mail_module","port");
+        }
 
         // sujet
         $subject = '=?UTF-8?B?'.base64_encode($msg->subject).'?=';
@@ -94,8 +101,13 @@ class MailModule implements iModule
 
         $content = "";
         $content_type = "text/plain";
-        $template_path = $app->getCfgValue("mail_module","template_path")."/".$msg->template;
-        $template_type = mime_content_type( $template_path );
+        if($msg->template){
+            $template_path = $app->getCfgValue("mail_module","template_path")."/".$msg->template;
+            $template_type = mime_content_type( $template_path );
+        }
+        else {
+            $template_type="text/plain";
+        }
         switch($template_type){
             //HTML
             case "text/html":
@@ -184,36 +196,6 @@ class MailModule implements iModule
         // OK
         ok:
         return RESULT(cResult::Ok, MailModule::MailSended);
-    }
-    
-    /** 
-     * Traduit un nom d'attribut
-     * 
-     * @param string $name Nom de l'attribut
-     * @return Texte de remplacement. Si le nom d'attribut est inconnu, l'identifiant est retourné
-     */
-    public static function translateAttributeName($name){ 
-        switch($name){
-            case "to":
-                return "Adresse du destinataire";
-            case "from":
-                return "Adresse de l'expéditeur";
-            case "subject":
-                return "Sujet";
-            case "msg":
-                return "Message";
-            case "from_name":
-                return "Nom de l'expéditeur";
-            case "server":
-                return "Adresse du serveur";
-            case "notify":
-                return "Adresse de notification";
-            case "port":
-                return "Numéro de port";
-            case "template":
-                return "Nom du fichier template";
-        }
-        return $name;
     }
     
 }

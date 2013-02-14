@@ -53,23 +53,23 @@ $optional_fields = array(
 if(!empty($_REQUEST)){
 
     //champs par défauts
-    if(!isset($_REQUEST["from"]))
+    if(!isset($_REQUEST["from"]) || empty($_REQUEST["from"]))
         $_REQUEST["from"]  = $app->getCfgValue("mail_module","from");
 
     //champs par défauts
-    if(!isset($_REQUEST["from_name"]))
+    if(!isset($_REQUEST["from_name"]) || empty($_REQUEST["from_name"]))
         $_REQUEST["from_name"]  = $app->getCfgValue("mail_module","from_name");
 
     //champs par défauts
-    if(!isset($_REQUEST["server"]))
+    if(!isset($_REQUEST["server"]) || empty($_REQUEST["server"]))
         $_REQUEST["server"]  = $app->getCfgValue("mail_module","server");
 
     //champs par défauts
-    if(!isset($_REQUEST["port"]))
+    if(!isset($_REQUEST["port"]) || empty($_REQUEST["port"]))
         $_REQUEST["port"]  = $app->getCfgValue("mail_module","port");
 
     //champs par défauts
-    if(!isset($_REQUEST["template"]))
+    if(!isset($_REQUEST["template"]) || empty($_REQUEST["template"]))
         $_REQUEST["template"]  = $app->getCfgValue("mail_module","template");
 
     // exemples JS
@@ -107,8 +107,8 @@ $result = cResult::getLast();
 success:
 
 // Traduit le nom du champ concerné
-if(isset($result->att["field_name"]))
-    $result->att["field_name"] = MailModule::translateAttributeName($result->att["field_name"]);
+if(isset($result->att["field_name"]) && $app->getDefaultFile($default))
+    $result->att["field_name"] = $default->getResultText("fields",$result->att["field_name"]);
 
 // Traduit le résultat
 $att = $app->translateResult($result);
