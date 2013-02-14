@@ -95,11 +95,11 @@ class MailModule implements iModule
         global $sock;
         $sock = new cSocket();
         $rsp  = "";
-
+        
         //--------------------------------------------------------------
         // fabrique le corps du message
 
-        $content = "";
+        /*$content = "";
         $content_type = "text/plain";
         if($msg->template){
             $template_path = $app->getCfgValue("mail_module","template_path")."/".$msg->template;
@@ -123,7 +123,7 @@ class MailModule implements iModule
                 $content_type = "text/plain";
                 $content = $msg->msg;
                 break;
-        }
+        }*/
 
         //--------------------------------------------------------------
         // puts
@@ -167,7 +167,7 @@ class MailModule implements iModule
 
         //construit et envoie le corps du message     
         $data = "";
-        $data .= 'Content-Type: '.$content_type.'; charset=UTF-8'."\n";
+        $data .= 'Content-Type: '.$msg->contentType.'; charset=UTF-8'."\n";
         $data .= 'Content-Transfer-Encoding: 8bit'."\n";
         $data .= "To: $to\n";
         if(!empty($from_name))
@@ -176,7 +176,7 @@ class MailModule implements iModule
           $data .= 'From: '.$msg->from."\n";
         $data .= 'Subject: '.$subject."\n";
         $data .= "\n";
-        $data .= $content."\n";
+        $data .= $msg->msg."\n";
         $data .= "\r\n.\r\n"; // fin de corps du message
         if(!puts($data)) goto onerror;
 

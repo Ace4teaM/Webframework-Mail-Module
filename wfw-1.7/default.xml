@@ -34,9 +34,14 @@
             <EMPTY_TEXT>Champ vide</EMPTY_TEXT>
             <INVALID_CHAR>Champ contenant des caractères interdits</INVALID_CHAR>
             <INVALID_FORMAT>Champ mal formé</INVALID_FORMAT>
+            <INVALID_RANGE>Rang de valeur invalide</INVALID_RANGE>
+            <OVERSIZED>Trop de caractères</OVERSIZED>
+            <UNDERSIZED>Pas assez de caractères</UNDERSIZED>
             <DB_CONNECTION>Connexion au serveur de base de données a échouée</DB_CONNECTION>
             <DB_SQL_QUERY>Requête SQL mal formée</DB_SQL_QUERY>
             <SOCK_OPEN_URL>La connexion au serveur a échouée</SOCK_OPEN_URL>
+            <UNKNOWN_HOSTNAME>Nom de l'hôte inconnu</UNKNOWN_HOSTNAME>
+            <NO_DATABASE_CONFIGURED>Aucune base de donées n'est présente dans la configuration</NO_DATABASE_CONFIGURED>
             <!-- WFW (ERR_SYSTEM) -->
             <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
             <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
