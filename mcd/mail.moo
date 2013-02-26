@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{4CEC0A73-C5E6-4402-AC40-E20B444F96BB}" Label="" LastModificationDate="1360911173" Name="mail" Objects="27" Symbols="3" Target="PHP" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{4CEC0A73-C5E6-4402-AC40-E20B444F96BB}" Label="" LastModificationDate="1361906080" Name="mail" Objects="27" Symbols="3" Target="PHP" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,8 +12,8 @@
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360168591</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360911173</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1361906080</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:History>ORG {F264F748-2FC1-4203-9947-310553CD4BD9}
 DAT 1360168599
 ATT FOPT
@@ -95,7 +95,7 @@ DLD {E2774298-473A-4424-807A-E8ECDEF099C3}</a:History>
 
 [FolderOptions\Class Diagram Objects]
 GenerationCheckModel=Yes
-GenerationPath=C:\Users\AceTeaM\Documents\GitHub\Webframework-Mail-Module\wfw-1.7\lib\mail\
+GenerationPath=C:\Users\developpement\Documents\GitHub\Webframework-Mail-Module\wfw-1.7\lib\mail\
 GenerationOptions=
 GenerationTasks=
 GenerationTargets=WSDL[LF]F[LF]WSDLJava[LF]T
@@ -3594,9 +3594,9 @@ DAT 1360911159</a:History>
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360168599</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360311568</a:ModificationDate>
+<a:ModificationDate>1361906025</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/AceTeaM/Documents/GitHub/Webframework-Mail-Module/mcd/mail.mpd</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Webframework-Mail-Module/mcd/mail.mpd</a:TargetModelURL>
 <a:TargetModelID>F264F748-2FC1-4203-9947-310553CD4BD9</a:TargetModelID>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
 <c:SessionShortcuts>
@@ -3609,8 +3609,8 @@ DAT 1360911159</a:History>
 <a:Code>WSDLJava</a:Code>
 <a:CreationDate>1360850578</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1360850578</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1361906025</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetModelURL>file:///%_XEM%/WSDLJ2EE.xem</a:TargetModelURL>
 <a:TargetModelID>C8F5F7B2-CF9D-4E98-8301-959BB6E86C8A</a:TargetModelID>
 <a:TargetModelClassID>186C8AC3-D3DC-11D3-881C-00508B03C75C</a:TargetModelClassID>
