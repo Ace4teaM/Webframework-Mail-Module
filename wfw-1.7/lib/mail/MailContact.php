@@ -91,12 +91,12 @@ class MailContactMgr
       
       //execute la requete
        $query = "SELECT * from mail_contact where $cond";
-       if($db->execute($query)){
+       if($db->execute($query,$result)){
             $inst = new MailContact();
-          $inst->mailContactId = $db->fetchValue("mail_contact_id");
-          $inst->mailAddress = $db->fetchValue("mail_address");
-          $inst->firstname = $db->fetchValue("firstname");
-          $inst->lastname = $db->fetchValue("lastname");          
+          $inst->mailContactId = $result->fetchValue("mail_contact_id");
+          $inst->mailAddress = $result->fetchValue("mail_address");
+          $inst->firstname = $result->fetchValue("firstname");
+          $inst->lastname = $result->fetchValue("lastname");          
 
           return true;
        }
@@ -120,12 +120,12 @@ class MailContactMgr
            
       //execute la requete
        $query = "SELECT * from mail_contact where mail_contact_id=$id";
-       if($db->execute($query)){
+       if($db->execute($query,$result)){
             $inst = new MailContact();
-          $inst->mailContactId = $db->fetchValue("mail_contact_id");
-          $inst->mailAddress = $db->fetchValue("mail_address");
-          $inst->firstname = $db->fetchValue("firstname");
-          $inst->lastname = $db->fetchValue("lastname");          
+          $inst->mailContactId = $result->fetchValue("mail_contact_id");
+          $inst->mailAddress = $result->fetchValue("mail_address");
+          $inst->firstname = $result->fetchValue("firstname");
+          $inst->lastname = $result->fetchValue("lastname");          
 
           return true;
        }

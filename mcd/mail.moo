@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{4CEC0A73-C5E6-4402-AC40-E20B444F96BB}" Label="" LastModificationDate="1361906080" Name="mail" Objects="27" Symbols="3" Target="PHP" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{4CEC0A73-C5E6-4402-AC40-E20B444F96BB}" Label="" LastModificationDate="1361950120" Name="mail" Objects="29" Symbols="3" Target="PHP (WFW)" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,7 +12,7 @@
 <a:Code>MAIL</a:Code>
 <a:CreationDate>1360168591</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1361906080</a:ModificationDate>
+<a:ModificationDate>1361950088</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {F264F748-2FC1-4203-9947-310553CD4BD9}
 DAT 1360168599
@@ -90,7 +90,8 @@ DLD {55DF0742-1B10-4587-8D4E-A9ACAE705D47}
 DLD {2B5B1CBD-3D60-4861-8164-D9174B8C0DA6}
 DLD {5A452DA5-9317-426B-AB0B-CA4920E8ACDD}
 DLD {61D74B99-467F-4D46-9AEA-94BDB50C82E6}
-DLD {E2774298-473A-4424-807A-E8ECDEF099C3}</a:History>
+DLD {E2774298-473A-4424-807A-E8ECDEF099C3}
+ATT DVTL</a:History>
 <a:PackageOptionsText>[FolderOptions]
 
 [FolderOptions\Class Diagram Objects]
@@ -2136,12 +2137,12 @@ NameToCode=No</a:ModelOptionsText>
 </c:GenerationOrigins>
 <c:ObjectLanguage>
 <o:Shortcut Id="o4">
-<a:ObjectID>E5EF0660-80E7-4ED8-9E45-54E825ABCF52</a:ObjectID>
-<a:Name>PHP</a:Name>
-<a:Code>PHP</a:Code>
-<a:CreationDate>1360168591</a:CreationDate>
+<a:ObjectID>823E19EA-944E-4A15-B5D2-4C91F9367417</a:ObjectID>
+<a:Name>PHP (WFW)</a:Name>
+<a:Code>PHP (WFW)</a:Code>
+<a:CreationDate>1361950088</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360168591</a:ModificationDate>
+<a:ModificationDate>1361950088</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetStereotype/>
 <a:TargetID>C37F67C8-679C-48FB-8CA4-2E98B9D416F7</a:TargetID>
@@ -3167,6 +3168,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o11">
+<a:ModificationDate>1361950120</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((7773,-9971), (18251,-4203))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -3574,24 +3576,10 @@ DAT 1360911159</a:History>
 </c:Classes>
 <c:TargetModels>
 <o:TargetModel Id="o29">
-<a:ObjectID>46EBB590-78CF-490E-B2DA-4AC760648190</a:ObjectID>
-<a:Name>PHP</a:Name>
-<a:Code>PHP</a:Code>
-<a:CreationDate>1360168591</a:CreationDate>
-<a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360311568</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
-<a:TargetModelURL>file:///%_OBJLANG%/php.xol</a:TargetModelURL>
-<a:TargetModelID>C37F67C8-679C-48FB-8CA4-2E98B9D416F7</a:TargetModelID>
-<a:TargetModelClassID>1811206C-1A4B-11D1-83D9-444553540000</a:TargetModelClassID>
-<c:SessionShortcuts>
-<o:Shortcut Ref="o4"/>
-</c:SessionShortcuts>
-</o:TargetModel>
-<o:TargetModel Id="o30">
 <a:ObjectID>872D65ED-132E-4824-93B0-B418586C355B</a:ObjectID>
 <a:Name>mail</a:Name>
 <a:Code>MAIL</a:Code>
+<a:ExtractionID>7274580</a:ExtractionID>
 <a:CreationDate>1360168599</a:CreationDate>
 <a:Creator>developpement</a:Creator>
 <a:ModificationDate>1361906025</a:ModificationDate>
@@ -3603,19 +3591,34 @@ DAT 1360911159</a:History>
 <o:Shortcut Ref="o3"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o31">
+<o:TargetModel Id="o30">
 <a:ObjectID>0E019DA8-E4EA-4B1E-A138-6867832BAAAA</a:ObjectID>
 <a:Name>WSDL for Java</a:Name>
 <a:Code>WSDLJava</a:Code>
 <a:CreationDate>1360850578</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361906025</a:ModificationDate>
+<a:ModificationDate>1361950007</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetModelURL>file:///%_XEM%/WSDLJ2EE.xem</a:TargetModelURL>
 <a:TargetModelID>C8F5F7B2-CF9D-4E98-8301-959BB6E86C8A</a:TargetModelID>
 <a:TargetModelClassID>186C8AC3-D3DC-11D3-881C-00508B03C75C</a:TargetModelClassID>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o5"/>
+</c:SessionShortcuts>
+</o:TargetModel>
+<o:TargetModel Id="o31">
+<a:ObjectID>93D09182-9501-4A12-B345-250C0EAD715D</a:ObjectID>
+<a:Name>PHP (WFW)</a:Name>
+<a:Code>PHP (WFW)</a:Code>
+<a:CreationDate>1361950088</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361950088</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:TargetModelURL>file:///%_OBJLANG%/php-wfw.xol</a:TargetModelURL>
+<a:TargetModelID>C37F67C8-679C-48FB-8CA4-2E98B9D416F7</a:TargetModelID>
+<a:TargetModelClassID>1811206C-1A4B-11D1-83D9-444553540000</a:TargetModelClassID>
+<c:SessionShortcuts>
+<o:Shortcut Ref="o4"/>
 </c:SessionShortcuts>
 </o:TargetModel>
 </c:TargetModels>

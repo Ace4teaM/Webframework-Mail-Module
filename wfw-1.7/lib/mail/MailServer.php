@@ -86,11 +86,11 @@ class MailServerMgr
       
       //execute la requete
        $query = "SELECT * from mail_server where $cond";
-       if($db->execute($query)){
+       if($db->execute($query,$result)){
             $inst = new MailServer();
-          $inst->mailServerId = $db->fetchValue("mail_server_id");
-          $inst->serverAdr = $db->fetchValue("server_adr");
-          $inst->portNum = $db->fetchValue("port_num");          
+          $inst->mailServerId = $result->fetchValue("mail_server_id");
+          $inst->serverAdr = $result->fetchValue("server_adr");
+          $inst->portNum = $result->fetchValue("port_num");          
 
           return true;
        }
@@ -114,11 +114,11 @@ class MailServerMgr
            
       //execute la requete
        $query = "SELECT * from mail_server where mail_server_id=$id";
-       if($db->execute($query)){
+       if($db->execute($query,$result)){
             $inst = new MailServer();
-          $inst->mailServerId = $db->fetchValue("mail_server_id");
-          $inst->serverAdr = $db->fetchValue("server_adr");
-          $inst->portNum = $db->fetchValue("port_num");          
+          $inst->mailServerId = $result->fetchValue("mail_server_id");
+          $inst->serverAdr = $result->fetchValue("server_adr");
+          $inst->portNum = $result->fetchValue("port_num");          
 
           return true;
        }

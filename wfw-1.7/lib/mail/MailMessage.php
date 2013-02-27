@@ -106,15 +106,15 @@ class MailMessageMgr
       
       //execute la requete
        $query = "SELECT * from mail_message where $cond";
-       if($db->execute($query)){
+       if($db->execute($query,$result)){
             $inst = new MailMessage();
-          $inst->from = $db->fetchValue("from");
-          $inst->to = $db->fetchValue("to");
-          $inst->msg = $db->fetchValue("msg");
-          $inst->subject = $db->fetchValue("subject");
-          $inst->fromName = $db->fetchValue("from_name");
-          $inst->notify = $db->fetchValue("notify");
-          $inst->contentType = $db->fetchValue("content_type");          
+          $inst->from = $result->fetchValue("from");
+          $inst->to = $result->fetchValue("to");
+          $inst->msg = $result->fetchValue("msg");
+          $inst->subject = $result->fetchValue("subject");
+          $inst->fromName = $result->fetchValue("from_name");
+          $inst->notify = $result->fetchValue("notify");
+          $inst->contentType = $result->fetchValue("content_type");          
 
           return true;
        }
@@ -138,15 +138,15 @@ class MailMessageMgr
            
       //execute la requete
        $query = "SELECT * from mail_message where mail_message_id=$id";
-       if($db->execute($query)){
+       if($db->execute($query,$result)){
             $inst = new MailMessage();
-          $inst->from = $db->fetchValue("from");
-          $inst->to = $db->fetchValue("to");
-          $inst->msg = $db->fetchValue("msg");
-          $inst->subject = $db->fetchValue("subject");
-          $inst->fromName = $db->fetchValue("from_name");
-          $inst->notify = $db->fetchValue("notify");
-          $inst->contentType = $db->fetchValue("content_type");          
+          $inst->from = $result->fetchValue("from");
+          $inst->to = $result->fetchValue("to");
+          $inst->msg = $result->fetchValue("msg");
+          $inst->subject = $result->fetchValue("subject");
+          $inst->fromName = $result->fetchValue("from_name");
+          $inst->notify = $result->fetchValue("notify");
+          $inst->contentType = $result->fetchValue("content_type");          
 
           return true;
        }
