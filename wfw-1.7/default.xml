@@ -26,6 +26,9 @@
         </codes>
 
         <errors>
+            <!-- **************************************************************
+                   Webframework
+            ************************************************************** -->
             <!-- WFW (ERR_OK) -->
             <INFORMATION>Information</INFORMATION>
             <!-- WFW (ERR_FAILED) -->
@@ -43,10 +46,15 @@
             <APP_UNKNOWN_HOSTNAME>Nom de l'hôte inconnu</APP_UNKNOWN_HOSTNAME>
             <APP_NO_DATABASE_CONFIGURED>Aucune base de donées n'est présente dans la configuration</APP_NO_DATABASE_CONFIGURED>
             <APP_UNKNOWN_FORM_TEMPLATE_FILE>Le template de formulaire est indéfinit</APP_UNKNOWN_FORM_TEMPLATE_FILE>
+            <APP_UNKNOWN_FIELD>Paramètre d'entrée inconnu</APP_UNKNOWN_FIELD>
+            <APP_UNKNOWN_FIELD_FORMAT>Format de paramètre d'entrée inconnu</APP_UNKNOWN_FIELD_FORMAT>
             <!-- WFW (ERR_SYSTEM) -->
             <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
             <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
             
+            <!-- **************************************************************
+                   Mailing Module
+            ************************************************************** -->
             <!-- MAIL (ERR_OK) -->
             <MAIL_SENDED>Message envoyé</MAIL_SENDED>
             <!-- MAIL (ERR_FAILED) -->
@@ -54,19 +62,26 @@
         </errors>
         
         <messages>
-            <!-- WFW -->
+            <!-- **************************************************************
+                   Webframework
+            ************************************************************** -->
             <INPUT_MSG_INVALID_FIELD>
                 Merci de renseigner le champ: $FIELD_NAME.
             </INPUT_MSG_INVALID_FIELD>
             <SOCK_SERVER_CONNECTION>
                 Cause retourné par le socket #$ERRNO : $ERRSTR
-                [$SERVER : $PORT]
             </SOCK_SERVER_CONNECTION>
             <WFW_MSG_POPULATE_FORM>
                 Merci de compléter le formulaire
             </WFW_MSG_POPULATE_FORM>
+            <APP_MSG_UNDEFINED_FIELD>L'Application doit définir le champs '$FIELD_NAME'</APP_MSG_UNDEFINED_FIELD>
+            <APP_MSG_UNDEFINED_FIELD_FORMAT>L'Application doit définir le format du champs '$FIELD_NAME'. Ajoutez ce format à la configuration (section [fields_formats]).</APP_MSG_UNDEFINED_FIELD_FORMAT>
+            <APP_MSG_UNDEFINED_FIELD_CLASS>L'Application doit définir la classe du champs '$CLASS_NAME'.</APP_MSG_UNDEFINED_FIELD_CLASS>
             
-            <!-- MAIL -->
+            
+            <!-- **************************************************************
+                   Mailing Module
+            ************************************************************** -->
             <MAIL_CMD_FAILED>
                 Une commande à retournée une réponse négative.
                 Commande: $CMD
@@ -75,7 +90,9 @@
         </messages>
         
         <fields>
-            <!-- MAIL -->
+            <!-- **************************************************************
+                   Mailing Module
+            ************************************************************** -->
             <to>Adresse du destinataire</to>
             <from>Adresse de l'expéditeur</from>
             <from_name>Nom de l'expéditeur</from_name>
