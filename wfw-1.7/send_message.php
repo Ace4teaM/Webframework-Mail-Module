@@ -34,21 +34,18 @@ RESULT(cResult::Ok,cApplication::Information,array("message"=>"WFW_MSG_POPULATE_
 $result = cResult::getLast();
 
 //requis
-$fields = array(
-    'to'=>'cInputMail',
-    'subject'=>'cInputString',
-    'msg'=>''
-);
+if(!$app->makeFiledList(
+        $fields,
+        array( 'to', 'subject', 'msg' ),
+        cXMLDefault::FieldFormatClassName )
+   ) $app->processLastError();
 
 //optionnels
-$optional_fields = array(
-    'from'=>'cInputMail',
-    'from_name'=>'cInputString',
-    'server'=>'',
-    'notify'=>'cInputMail',
-    'port'=>'cInputInteger',
-    'template'=>'cInputUNIXFileName',    
-);
+if(!$app->makeFiledList(
+        $optional_fields,
+        array( 'from', 'from_name', 'server', 'port', 'notify', 'template' ),
+        cXMLDefault::FieldFormatClassName )
+   ) $app->processLastError();
 
 if(!empty($_REQUEST)){
 
@@ -125,6 +122,14 @@ switch($format){
     case "xarg":
         header("content-type: text/xarg");
         echo xarg_encode_array($att);
+        break;
+    case "xml":
+        header("content-type: text/xml");
+        $doc = new XMLDocument();
+        $rootEl = $doc->createElement('data');
+        $doc->appendChild($rootEl);
+        $doc->appendAssocArray($rootEl,$att);
+        echo '<?xml version="1.0" encoding="UTF-8" ?>'.$doc->saveXML( $doc->documentElement );
         break;
     case "html":
         echo $app->makeFormView($att,$fields,$optional_fields,$_REQUEST);
