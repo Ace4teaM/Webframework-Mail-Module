@@ -27,6 +27,7 @@
 
 
 require_once("php/class/bases/iModule.php");
+require_once("php/class/bases/socket.php");
 require_once("php/xml_default.php");
 
     
