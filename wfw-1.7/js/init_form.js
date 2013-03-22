@@ -20,11 +20,12 @@
 */
 
 /**
- * Convertie les formulaires HTML présents en formulaire dynamique ExtJS
+ * @brief Convertie les formulaires HTML présents en formulaire dynamique ExtJS
+ * @remarks Le forumalire HTML original doit être généré via la methode PHP Application.makeFormView()
  **/
-
 MyApp.Loading.callback_list.push(function(Y)
 {
+    var wfw = Y.namespace("wfw");
     var g = MyApp.global.Vars;
     var formEl = Y.Node.one("#form");
                 
@@ -109,6 +110,27 @@ MyApp.Loading.callback_list.push(function(Y)
         text: ((submitBtn) ? submitBtn.get("value") : "Envoyer"),
         handler: function() {
             var form = this.up('form').getForm();
+
+            wfw.Request.Add(
+                "send_message",
+                wfw.Navigator.getURI("send_message")+"?output=xml",
+                form.getValues(),
+                wfw.Xml.onCheckRequestResult,
+                {
+                    no_msg    : true,
+                    onsuccess : function(obj,xml_doc){
+                        var result = wfw.Result.fromXML( Y.Node(xml_doc.documentElement) );
+                        MyApp.showResultToMsg(result);
+                    },
+                    onfailed : function(obj,xml_doc){
+                        var result = wfw.Result.fromXML( Y.Node(xml_doc.documentElement) );
+                        MyApp.showResultToMsg(result);
+                    },
+                    onerror   : function(obj){alert("onerror");}
+                },
+                false
+            );
+            /*
             if (form.isValid()) {
                 form.submit({
                     success: function(form, action) {
@@ -120,7 +142,7 @@ MyApp.Loading.callback_list.push(function(Y)
                 });
             } else {
                 Ext.Msg.alert( "Error!", "Your form is invalid!" );
-            }
+            }*/
         }
     });
                 

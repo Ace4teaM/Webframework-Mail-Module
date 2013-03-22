@@ -43,9 +43,10 @@ if(!$app->makeFiledList(
 //optionnels
 if(!$app->makeFiledList(
         $optional_fields,
-        array( 'from', 'from_name', 'server', 'port', 'notify', 'template' ),
+        array( 'from', 'from_name', 'server_adr', 'port_num', 'notify', 'content_type' ),
         cXMLDefault::FieldFormatClassName )
    ) $app->processLastError();
+
 
 if(!empty($_REQUEST)){
 
@@ -53,21 +54,20 @@ if(!empty($_REQUEST)){
     if(!isset($_REQUEST["from"]) || empty($_REQUEST["from"]))
         $_REQUEST["from"]  = $app->getCfgValue("mail_module","from");
 
-    //champs par défauts
     if(!isset($_REQUEST["from_name"]) || empty($_REQUEST["from_name"]))
         $_REQUEST["from_name"]  = $app->getCfgValue("mail_module","from_name");
 
-    //champs par défauts
-    if(!isset($_REQUEST["server"]) || empty($_REQUEST["server"]))
-        $_REQUEST["server"]  = $app->getCfgValue("mail_module","server");
+    if(!isset($_REQUEST["server_adr"]) || empty($_REQUEST["server_adr"]))
+        $_REQUEST["server_adr"]  = $app->getCfgValue("mail_module","server_adr");
 
-    //champs par défauts
-    if(!isset($_REQUEST["port"]) || empty($_REQUEST["port"]))
-        $_REQUEST["port"]  = $app->getCfgValue("mail_module","port");
+    if(!isset($_REQUEST["port_num"]) || empty($_REQUEST["port_num"]))
+        $_REQUEST["port_num"]  = $app->getCfgValue("mail_module","port_num");
 
-    //champs par défauts
-    if(!isset($_REQUEST["template"]) || empty($_REQUEST["template"]))
-        $_REQUEST["template"]  = $app->getCfgValue("mail_module","template");
+    if(!isset($_REQUEST["content_type"]) || empty($_REQUEST["content_type"]))
+        $_REQUEST["content_type"]  = "text/plain";
+
+    if(!isset($_REQUEST["notify"]) || empty($_REQUEST["notify"]))
+        $_REQUEST["notify"]  = NULL;
 
     // exemples JS
     if(!cInputFields::checkArray($fields, $optional_fields))
@@ -80,13 +80,13 @@ if(!empty($_REQUEST)){
     $msg->msg      = $_REQUEST["msg"];
     $msg->from     = $_REQUEST["from"];
     $msg->fromName = $_REQUEST["from_name"];
-    $msg->template = $_REQUEST["template"];
-    $msg->notify   = isset($_REQUEST["notify"]) ? $_REQUEST["notify"] : NULL;
+    $msg->notify   = $_REQUEST["notify"];
+    $msg->contentType   = $_REQUEST["content_type"];
 
     //initialise l'objet MailServer
     $server = new MailServer();
-    $server->serverAdr = $_REQUEST["server"];
-    $server->portNum   = $_REQUEST["port"];
+    $server->serverAdr = $_REQUEST["server_adr"];
+    $server->portNum   = $_REQUEST["port_num"];
 
     //envoie le message
     if(!MailModule::sendMessage($msg,$server))

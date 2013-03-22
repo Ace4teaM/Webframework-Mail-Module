@@ -18,30 +18,63 @@
     along with WebFrameWork.  If not, see <http://www.gnu.org/licenses/>.
     ---------------------------------------------------------------------------------------------------------------------------------------
 */
+/*
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    (C)2013 Thomas AUGUEY <contact@aceteam.org>
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    This file is part of WebFrameWork.
 
+    WebFrameWork is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    WebFrameWork is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with WebFrameWork.  If not, see <http://www.gnu.org/licenses/>.
+    ---------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+/*------------------------------------------------------------------------------------------------------------------*/
 /**
  * Implémentation de l'application ExtJS
- * 
  **/
+/*------------------------------------------------------------------------------------------------------------------*/
+
 
 //application class
 Ext.application({
-    name: 'Webframework-Mailing-Module',
+    name: 'MyApp',
     appFolder: 'application',
     enableQuickTips:true,
     controllers: [
     ],
     autoCreateViewport: false,
     launch: function() {
-        YUI(wfw_yui_config(wfw_yui_base_path)).use('node', 'event', function (Y)
+        MyApp.global.Vars.yui = YUI(wfw_yui_config(wfw_yui_base_path)).use('node', 'event', 'wfw-result','wfw-xml-template', 'etape_regionale-region', 'wfw-user', 'loading-box', 'io', 'wfw-navigator', 'wfw-request', 'wfw-xml','datatype-xml', function (Y)
         {
-            //using Ext-js ?
+            var wfw = Y.namespace("wfw");
+            
+            //appel les fonctions d'initialisation
             for(var index in MyApp.Loading.callback_list){
                 var func = MyApp.Loading.callback_list[index];
                 func(Y);
             }
+
+            //fin de chargement
+            if(typeof(Y.LoadingBox) != "undefined")
+                Y.LoadingBox.stop();
         });
-    }
+    },
+    onCheckUserConnection: null,
+    onInitMainLayout: null,
+    createFrameDialog: null,
+    showFormDialog: null,
+    makeForm: null
 });
 
 //globals variables
@@ -60,136 +93,113 @@ Ext.define('MyApp.global.Vars', {
 //ajoutez à ce global les fonctions d'initialisations
 Ext.define('MyApp.Loading', {
     statics: {
-        callback_list : [
-            /*--------------------------------------
-             *  Initialise le viewport
-             *  convertie le HTML existant en layout dynamique
-             --------------------------------------*/
-            function (Y) {
-                var wfw = Y.namespace("wfw");
-                
-                //cache le contenu
-                var original = Y.Node.all("body > *");
-
-                var g = MyApp.global.Vars;
-
-                //north
-                g.statusPanel = Ext.create('Ext.Panel', {
-                    header:false,
-                    layout: 'hbox',
-                    region: 'north',     // position for region
-                    split: true,         // enable resizing
-                    margins: '0 5 5 5',
-                    /*html: Y.Node.one("#menu").get("innerHTML")*/
-                    items: [{
-                        header:false,
-                        border: false,
-                        width:200,
-                        html: Y.Node.one("#header").get("innerHTML")
-                    },{
-                        header:false,
-                        width:"100%",
-                        border: false,
-                        html: Y.Node.one("#status").get("innerHTML")
-                    }],
-                    renderTo: Ext.getBody()
-                });
-
-                //center
-                g.contentPanel = Ext.create('Ext.Panel', {
-                    header :false,
-                    //title: 'Content',
-                    region: 'center',     // position for region
-                    height: 100,
-                    split: true,         // enable resizing
-                    margins: '0 5 5 5',
-                    layout: 'vbox',
-                    autoScroll:true,
-                    //html: Y.Node.one("#content").get("innerHTML")
-                    items: [{
-                        header:false,
-                        border: false,
-                        width:"100%",
-                        html: Y.Node.one("#result").get("innerHTML")
-                    },{
-                        header:false,
-                        border: false,
-                        width:"100%",
-                        html: Y.Node.one("#content").get("innerHTML")
-                    }],
-                    renderTo: Ext.getBody()
-                });
-
-                //west
-                g.menuPanel = Ext.create('Ext.Panel', {
-                    title: 'Menu',
-                    layout: {
-                        // layout-specific configs go here
-                        type: 'accordion',
-                        titleCollapse: false,
-                        animate: true,
-                        activeOnTop: true
-                    },
-                    region: 'west',     // position for region
-                    width: 200,
-                    split: true,         // enable resizing
-                    margins: '0 5 5 5',
-                    /*html: Y.Node.one("#menu").get("innerHTML")*/
-                    items: [{
-                        title: 'Administrateur',
-                        html: Y.Node.one("#menu1").get("innerHTML")
-                    },{
-                        title: 'Visiteur',
-                        html: Y.Node.one("#menu2").get("innerHTML")
-                    },{
-                        title: 'Utilisateur',
-                        html: Y.Node.one("#menu3").get("innerHTML")
-                    }],
-                    renderTo: Ext.getBody()
-                });
-
-                //south
-                g.footerPanel = Ext.create('Ext.Panel', {
-                    header :false,
-                    //title: 'Pied de page',
-                    region: 'south',     // position for region
-                    split: true,         // enable resizing
-                    margins: '0 5 5 5',
-                    html: Y.Node.one("#footer").get("innerHTML")
-                });
-
-                //viewport
-                g.viewport = Ext.create('Ext.Viewport', {
-                    layout: 'border',
-                    items: [g.contentPanel,g.menuPanel,g.statusPanel,g.footerPanel]
-                });
-                
-                original.remove();
-            }
-        ]
+        callback_list : []
     }
 });
 
-/*--------------------------------------
- *  Initialise
- --------------------------------------
-YUI(wfw_yui_config(wfw_yui_base_path)).use('node', 'event', function (Y)
+/*------------------------------------------------------------------------------------------------------------------*/
+/**
+ * @brief Initialise le viewport
+ * @remarks convertie le HTML existant en layout dynamique
+ * */
+/*------------------------------------------------------------------------------------------------------------------*/
+
+MyApp.onInitLayout = function(Y)
 {
     var wfw = Y.namespace("wfw");
+    var g = MyApp.global.Vars;
 
-    //connection status change
-    var onLoad = function(e)
-    {
-        for(var index in MyApp.Loading.callback_list){
-            var func = MyApp.Loading.callback_list[index];
-            func(Y);
-        }
-    };
+    //l'élément de résultat n'est plus utilisé
+    Y.Node.one("#result").hide();
     
-    //initialise les evenements
-    Y.one('window').on('load', onLoad);
-});
-*/
+    // Nord
+    g.statusPanel = Ext.create('Ext.Panel', {
+        header:false,
+        layout: 'hbox',
+        region: 'north',     // position for region
+        split: true,         // enable resizing
+        margins: '0 5 5 5',
+        /*html: Y.Node.one("#menu").get("innerHTML")*/
+        items: [{
+            header:false,
+            border: false,
+            width:200,
+            contentEl: Y.Node.one("#header").getDOMNode()
+        },{
+            header:false,
+            width:"100%",
+            border: false,
+            contentEl: Y.Node.one("#status").getDOMNode()
+        }],
+        renderTo: Ext.getBody()
+    });
+
+    // Centre
+    g.contentPanel = Ext.create('Ext.Panel', {
+        header :false,
+        //title: 'Content',
+        region: 'center',     // position for region
+        height: 100,
+        split: true,         // enable resizing
+        margins: '0',
+        layout: 'vbox',
+        autoScroll:true,
+        //html: Y.Node.one("#content").get("innerHTML")
+        items: [{
+            header:false,
+            border: false,
+            width:"100%",
+            contentEl: Y.Node.one("#content").getDOMNode()
+        }],
+        renderTo: Ext.getBody()
+    });
+
+    // Ouest
+    g.menuPanel = Ext.create('Ext.Panel', {
+        title: 'Menu',
+        layout: {
+            // layout-specific configs go here
+            type: 'accordion',
+            titleCollapse: false,
+            animate: true,
+            activeOnTop: true
+        },
+        region: 'west',     // position for region
+        width: 200,
+        split: true,         // enable resizing
+        margins: '0 5 5 5',
+        /*html: Y.Node.one("#menu").get("innerHTML")*/
+        items: [{
+            title: 'Administrateur',
+            contentEl: Y.Node.one("#menu1").getDOMNode()
+        },{
+            title: 'Visiteur',
+            contentEl: Y.Node.one("#menu2").getDOMNode()
+        },{
+            title: 'Utilisateur',
+            contentEl: Y.Node.one("#menu3").getDOMNode()
+        }],
+        renderTo: Ext.getBody()
+    });
+
+    // Sud
+    g.footerPanel = Ext.create('Ext.Panel', {
+        header :false,
+        //title: 'Pied de page',
+        region: 'south',     // position for region
+        split: true,         // enable resizing
+        margins: '0 5 5 5',
+        contentEl: Y.Node.one("#footer").getDOMNode()
+    });
+
+    //viewport
+    g.viewport = Ext.create('Ext.Viewport', {
+        layout: 'border',
+        items: [g.contentPanel,g.menuPanel,g.statusPanel,g.footerPanel]
+    });
+
+    //original.remove();
+}
 
 /*------------------------------------------------------------------------------------------------------------------*/
 /**
@@ -321,3 +331,4 @@ function convertHTMLForm(Y,formId)
                 
     g.contentPanel.add(form);
 }*/
+MyApp.Loading.callback_list.push(MyApp.onInitLayout);
