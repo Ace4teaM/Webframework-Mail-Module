@@ -80,8 +80,8 @@ class MailModule implements iModule
         //server par defaut ?
         if($server === NULL){
             $server = new MailServer();
-            $server->serverAdr = $app->getCfgValue("mail_module","server");
-            $server->portNum   = $app->getCfgValue("mail_module","port");
+            $server->serverAdr = $app->getCfgValue("mail_module","server_adr");
+            $server->portNum   = $app->getCfgValue("mail_module","port_num");
         }
 
         // sujet

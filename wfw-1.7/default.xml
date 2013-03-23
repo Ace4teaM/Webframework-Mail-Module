@@ -102,6 +102,7 @@
             <notify>Adresse de notification</notify>
             <server_adr>Adresse du serveur</server_adr>
             <port_num>Numéro de port</port_num>
+            <content_type>Type de contenu (mime-type)</content_type>
         </fields>
         
     </results>

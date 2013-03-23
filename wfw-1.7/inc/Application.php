@@ -14,7 +14,7 @@ class Application extends cApplication
         
         if($this->getDB($db_iface)){
             $attributes["bdd_status"] = $db_iface->getServiceProviderName();
-            $attributes["bdd_status"] .= " ( ".$this->getCfgValue("database", "name")." @ ".$this->getCfgValue("database", "server")." : ".$this->getCfgValue("database", "port")." )";
+            $attributes["bdd_status"] .= " ( ".$this->getCfgValue("database", "name")." @ ".$this->getCfgValue("database", "server_adr")." : ".$this->getCfgValue("database", "port")." )";
         }
         
         return parent::makeXMLView($filename,$attributes,$template_file);

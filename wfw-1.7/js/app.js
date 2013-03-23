@@ -55,7 +55,7 @@ Ext.application({
     ],
     autoCreateViewport: false,
     launch: function() {
-        MyApp.global.Vars.yui = YUI(wfw_yui_config(wfw_yui_base_path)).use('node', 'event', 'wfw-result','wfw-xml-template', 'etape_regionale-region', 'wfw-user', 'loading-box', 'io', 'wfw-navigator', 'wfw-request', 'wfw-xml','datatype-xml', function (Y)
+        MyApp.global.Vars.yui = YUI(wfw_yui_config(wfw_yui_base_path)).use('node', 'event', 'wfw-result','wfw-xml-template', 'wfw-user', 'loading-box', 'io', 'wfw-navigator', 'wfw-request', 'wfw-xml','datatype-xml', function (Y)
         {
             var wfw = Y.namespace("wfw");
             
@@ -201,19 +201,20 @@ MyApp.onInitLayout = function(Y)
     //original.remove();
 }
 
+
 /*------------------------------------------------------------------------------------------------------------------*/
 /**
  * @brief Convertie les formulaires HTML présents en formulaire dynamique ExtJS
- * @param object Y       YahooUI Instance
- * @param string formId  Identificateur du formulaire
- * */
-/*------------------------------------------------------------------------------------------------------------------
+ * @remarks Le forumalire HTML original doit être généré via la methode PHP Application.makeFormView()
+ **/
+/*------------------------------------------------------------------------------------------------------------------*/
 
-function convertHTMLForm(Y,formId)
+MyApp.onInitForm = function(Y)
 {
+    var wfw = Y.namespace("wfw");
     var g = MyApp.global.Vars;
-    var formEl = Y.Node.one("#"+formId);
-
+    var formEl = Y.Node.one("#form");
+                
     //champs
     var items=[];
     formEl.all("fieldset").each(function(fieldsetEl){
@@ -238,7 +239,10 @@ function convertHTMLForm(Y,formId)
             var name = node.get("name");
             var value = node.get("value");
             var type = node.get("className");
-
+            /*var parent = node.get("parentNode");
+                        parent.set("id",name+"_parentNode");
+                        parent = Ext.get(name+"_parentNode");
+                        node.remove();*/
             //alert(id+","+type+","+value);
             var item;
             switch(type){
@@ -260,6 +264,17 @@ function convertHTMLForm(Y,formId)
                         height:250,
                         enableColors: false,
                         enableAlignments: false
+                    };
+                    break;
+                case "cInputDate":
+                    item={
+                        xtype: 'datefield',
+                        fieldLabel: label.get("text"),
+                        id:name,
+                        name:name,
+                        format: 'd-m-Y',
+                        submitFormat:'Y-m-d',
+                        value: new Date()
                     };
                     break;
                 default:
@@ -292,6 +307,30 @@ function convertHTMLForm(Y,formId)
         text: ((submitBtn) ? submitBtn.get("value") : "Envoyer"),
         handler: function() {
             var form = this.up('form').getForm();
+
+            wfw.Request.Add(
+                null,
+                form.url,
+                object_merge(
+                    {output:"xml"},
+                    form.getValues()
+                ),
+                wfw.Xml.onCheckRequestResult,
+                {
+                    no_msg    : true,
+                    onsuccess : function(obj,xml_doc){
+                        var result = wfw.Result.fromXML( Y.Node(xml_doc.documentElement) );
+                        MyApp.showResultToMsg(result);
+                    },
+                    onfailed : function(obj,xml_doc){
+                        var result = wfw.Result.fromXML( Y.Node(xml_doc.documentElement) );
+                        MyApp.showResultToMsg(result);
+                    },
+                    onerror   : function(obj){alert("onerror");}
+                },
+                false
+            );
+            /*
             if (form.isValid()) {
                 form.submit({
                     success: function(form, action) {
@@ -303,7 +342,7 @@ function convertHTMLForm(Y,formId)
                 });
             } else {
                 Ext.Msg.alert( "Error!", "Your form is invalid!" );
-            }
+            }*/
         }
     });
                 
@@ -330,5 +369,8 @@ function convertHTMLForm(Y,formId)
     formEl.remove();
                 
     g.contentPanel.add(form);
-}*/
+}
+
+//
 MyApp.Loading.callback_list.push(MyApp.onInitLayout);
+MyApp.Loading.callback_list.push(MyApp.onInitForm);
