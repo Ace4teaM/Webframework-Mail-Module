@@ -87,10 +87,16 @@ class MailModule implements iModule
         // sujet
         $subject = '=?UTF-8?B?'.base64_encode($msg->subject).'?=';
         
+        // expediteur
+        if(empty($msg->from))
+            $msg->from     = $app->getCfgValue("mail_module","from");
+        if(empty($msg->fromName))
+            $msg->fromName = $app->getCfgValue("mail_module","from_name");
+        
         // nom de l'expediteur
         $from_name = "";
-        if(!empty($msg->from_name))
-                $from_name = '=?UTF-8?B?'.base64_encode($msg->from_name).'?=';
+        if(!empty($msg->fromName))
+                $from_name = '=?UTF-8?B?'.base64_encode($msg->fromName).'?=';
 
         // initialise la connexion
         global $sock;
@@ -172,7 +178,7 @@ class MailModule implements iModule
         $data .= 'Content-Transfer-Encoding: 8bit'."\n";
         $data .= "To: $to\n";
         if(!empty($from_name))
-          $data .= 'From: "'.$from_name.'" <'.$from.">\n"; 
+          $data .= 'From: "'.$from_name.'" <'.$msg->from.">\n"; 
         else
           $data .= 'From: '.$msg->from."\n";
         $data .= 'Subject: '.$subject."\n";
