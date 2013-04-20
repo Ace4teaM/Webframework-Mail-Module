@@ -8,7 +8,7 @@
     <index>
         <page id="index" name="Accueil">index.php</page>
         <!-- admin -->
-        <page id="send_message" role="administrator" name="Envoie un message">ctrl.php?app=mail_module&amp;ctrl=send_message</page>
+        <page id="mail_send_message" role="administrator" name="Envoie un message">ctrl.php?app=mail_module&amp;ctrl=send_message</page>
         <!-- visiteur -->
         <!-- utilisateur -->
     </index>
