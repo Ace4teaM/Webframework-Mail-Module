@@ -3,3 +3,4 @@
 /wfw-1.7/tmp/*
 /wfw-mod-mailling-1.1.0
 !/.gitignore
+!.htaccess
