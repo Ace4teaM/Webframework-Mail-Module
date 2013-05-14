@@ -26,7 +26,7 @@
  * UC   : mail_send_message
  */
 
-class Ctrl extends cApplicationCtrl{
+class mail_module_send_message_ctrl extends cApplicationCtrl{
     public $fields    = array('to', 'subject', 'msg');
     public $op_fields = array( 'from', 'from_name', 'server_adr', 'port_num', 'notify', 'content_type' );
 
