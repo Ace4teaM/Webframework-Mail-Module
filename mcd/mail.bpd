@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{F264F748-2FC1-4203-9947-310553CD4BD9}" Label="" LastModificationDate="1360911166" Name="mail" Objects="28" Symbols="3" Target="PostgreSQL 8" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{F264F748-2FC1-4203-9947-310553CD4BD9}" Label="" LastModificationDate="1361906008" Name="mail" Objects="28" Symbols="3" Target="PostgreSQL 8 (WFW)" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -2555,7 +2555,7 @@ PhysOpts=</a:ModelOptionsText>
 <c:DBMS>
 <o:Shortcut Id="o5">
 <a:ObjectID>2AEA120C-A872-4D45-851E-457CE4E59B2F</a:ObjectID>
-<a:Name>PostgreSQL 8</a:Name>
+<a:Name>PostgreSQL 8 (WFW)</a:Name>
 <a:Code>PGSQL80</a:Code>
 <a:CreationDate>1360168582</a:CreationDate>
 <a:Creator>developpement</a:Creator>
@@ -3710,11 +3710,11 @@ DAT 1360911159</a:History>
 </o:TargetModel>
 <o:TargetModel Id="o31">
 <a:ObjectID>06F38886-9711-4EC0-998B-4DA5718321D5</a:ObjectID>
-<a:Name>PostgreSQL 8</a:Name>
+<a:Name>PostgreSQL 8 (WFW)</a:Name>
 <a:Code>PGSQL80</a:Code>
 <a:CreationDate>1360168582</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1360311560</a:ModificationDate>
+<a:ModificationDate>1361906008</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetModelURL>file:///%_DBMS%/pgsql8.xdb</a:TargetModelURL>
 <a:TargetModelID>8AF15AEA-CCBC-4EDC-B468-7DB8DB5300B2</a:TargetModelID>
@@ -3731,7 +3731,7 @@ DAT 1360911159</a:History>
 <a:Creator>developpement</a:Creator>
 <a:ModificationDate>1360311568</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/AceTeaM/Documents/GitHub/Webframework-Mail-Module/mcd/mail.moo</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Webframework-Mail-Module/mcd/mail.moo</a:TargetModelURL>
 <a:TargetModelID>4CEC0A73-C5E6-4402-AC40-E20B444F96BB</a:TargetModelID>
 <a:TargetModelClassID>18112060-1A4B-11D1-83D9-444553540000</a:TargetModelClassID>
 <c:SessionShortcuts>

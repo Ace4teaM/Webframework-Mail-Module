@@ -27,10 +27,17 @@
 
 
 /**
-* @author       AceTeaM
+* @author       developpement
 */
 class MailMessage
 {
+   public function getId(){
+      return $this->mailMessageId;
+  }
+   public function setId($id){
+      return $this->mailMessageId = $id;
+  }
+
     
     /**
     * @var      String
@@ -76,6 +83,28 @@ class MailMessage
 */
 class MailMessageMgr
 {
+    /**
+     * @brief Convert existing instance to XML element
+     * @param $inst Entity instance (MailMessage)
+     * @param $doc Parent document
+     * @return New element node
+     */
+    public static function toXML(&$inst,$doc) {
+        $node = $doc->createElement(strtolower("MailMessage"));
+        
+        $node->appendChild($doc->createTextElement("from",$inst->from));
+        $node->appendChild($doc->createTextElement("to",$inst->to));
+        $node->appendChild($doc->createTextElement("msg",$inst->msg));
+        $node->appendChild($doc->createTextElement("subject",$inst->subject));
+        $node->appendChild($doc->createTextElement("from_name",$inst->fromName));
+        $node->appendChild($doc->createTextElement("notify",$inst->notify));
+        $node->appendChild($doc->createTextElement("content_type",$inst->contentType));       
+
+          
+        return $node;
+    }
+    
+    
     /*
       @brief Get entry list
       @param $list Array to receive new instances
@@ -83,13 +112,46 @@ class MailMessageMgr
       @param $db iDataBase derived instance
     */
     public static function getAll(&$list,$cond,$db=null){
+       $list = array();
+      
        //obtient la base de donnees courrante
        global $app;
        if(!$db && !$app->getDB($db))
          return false;
       
       //execute la requete
-       //...
+       $query = "SELECT * from mail_message where $cond";
+       if(!$db->execute($query,$result))
+          return false;
+       
+      //extrait les instances
+       $i=0;
+       while( $result->seek($i,iDatabaseQuery::Origin) ){
+        $inst = new MailMessage();
+        MailMessageMgr::bindResult($inst,$result);
+        array_push($list,$inst);
+        $i++;
+       }
+       
+       return RESULT_OK();
+    }
+    
+    /*
+      @brief Get single entry
+      @param $inst MailMessage instance pointer to initialize
+      @param $cond SQL Select condition
+      @param $db iDataBase derived instance
+    */
+    public static function bindResult(&$inst,$result){
+          $inst->from = $result->fetchValue("from");
+          $inst->to = $result->fetchValue("to");
+          $inst->msg = $result->fetchValue("msg");
+          $inst->subject = $result->fetchValue("subject");
+          $inst->fromName = $result->fetchValue("from_name");
+          $inst->notify = $result->fetchValue("notify");
+          $inst->contentType = $result->fetchValue("content_type");          
+
+       return true;
     }
     
     /*
@@ -108,15 +170,9 @@ class MailMessageMgr
        $query = "SELECT * from mail_message where $cond";
        if($db->execute($query,$result)){
             $inst = new MailMessage();
-          $inst->from = $result->fetchValue("from");
-          $inst->to = $result->fetchValue("to");
-          $inst->msg = $result->fetchValue("msg");
-          $inst->subject = $result->fetchValue("subject");
-          $inst->fromName = $result->fetchValue("from_name");
-          $inst->notify = $result->fetchValue("notify");
-          $inst->contentType = $result->fetchValue("content_type");          
-
-          return true;
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+          return MailMessageMgr::bindResult($inst,$result);
        }
        return false;
     }
@@ -133,26 +189,104 @@ class MailMessageMgr
        if(!$db && !$app->getDB($db))
          return false;
       
-       if(is_string($id))
-           $id = "'$id'";
-           
       //execute la requete
-       $query = "SELECT * from mail_message where mail_message_id=$id";
+       $query = "SELECT * from mail_message where mail_message_id=".$db->parseValue($id);
        if($db->execute($query,$result)){
             $inst = new MailMessage();
-          $inst->from = $result->fetchValue("from");
-          $inst->to = $result->fetchValue("to");
-          $inst->msg = $result->fetchValue("msg");
-          $inst->subject = $result->fetchValue("subject");
-          $inst->fromName = $result->fetchValue("from_name");
-          $inst->notify = $result->fetchValue("notify");
-          $inst->contentType = $result->fetchValue("content_type");          
-
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+             self::bindResult($inst,$result);
           return true;
        }
        return false;
     }
+    
+   /*
+      @brief Insert single entry with generated id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $add_fields Array of columns names/columns values of additional fields
+      @param $db iDataBase derived instance
+    */
+    public static function insert(&$inst,$add_fields=null,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->mailMessageId)){
+            $table_name = 'mail_message';
+            $table_id_name = $table_name.'_id';
+           if(!$db->execute("select * from new_id('$table_name','$table_id_name');",$result))
+              return RESULT(cResult::Failed, cApplication::EntityMissingId);
+           $inst->mailMessageId = intval($result->fetchValue("new_id"));
+       }
+       
+      //execute la requete
+       $query = "INSERT INTO mail_message (";
+       $query .= " from,";
+       $query .= " to,";
+       $query .= " msg,";
+       $query .= " subject,";
+       $query .= " from_name,";
+       $query .= " notify,";
+       $query .= " content_type,";
+       if(is_array($add_fields))
+           $query .= implode(',',array_keys($add_fields)).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       $query .= " VALUES(";
+       $query .= $db->parseValue($inst->from).",";
+       $query .= $db->parseValue($inst->to).",";
+       $query .= $db->parseValue($inst->msg).",";
+       $query .= $db->parseValue($inst->subject).",";
+       $query .= $db->parseValue($inst->fromName).",";
+       $query .= $db->parseValue($inst->notify).",";
+       $query .= $db->parseValue($inst->contentType).",";
+       if(is_array($add_fields))
+           $query .= implode(',',$add_fields).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       if($db->execute($query,$result))
+          return true;
 
+       return false;
+    }
+    
+   /*
+      @brief Update single entry by id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $db iDataBase derived instance
+    */
+    public static function update(&$inst,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->mailMessageId))
+           return RESULT(cResult::Failed, cApplication::EntityMissingId);
+      
+      //execute la requete
+       $query = "UPDATE mail_message SET";
+       $query .= " from =".$db->parseValue($inst->from).",";
+       $query .= " to =".$db->parseValue($inst->to).",";
+       $query .= " msg =".$db->parseValue($inst->msg).",";
+       $query .= " subject =".$db->parseValue($inst->subject).",";
+       $query .= " from_name =".$db->parseValue($inst->fromName).",";
+       $query .= " notify =".$db->parseValue($inst->notify).",";
+       $query .= " content_type =".$db->parseValue($inst->contentType).",";
+       $query = substr($query,0,-1);//remove last ','
+       $query .= " where mail_message_id=".$db->parseValue($inst->mailMessageId);
+       if($db->execute($query,$result))
+          return true;
+
+       return false;
+    }
+    
    /** @brief Convert name to code */
     public static function nameToCode($name){
         for($i=strlen($name)-1;$i>=0;$i--){

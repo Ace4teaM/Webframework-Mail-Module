@@ -27,10 +27,17 @@
 
 
 /**
-* @author       AceTeaM
+* @author       developpement
 */
 class MailContact
 {
+   public function getId(){
+      return $this->mailContactId;
+  }
+   public function setId($id){
+      return $this->mailContactId = $id;
+  }
+
     
     /**
     * @var      int
@@ -61,6 +68,25 @@ class MailContact
 */
 class MailContactMgr
 {
+    /**
+     * @brief Convert existing instance to XML element
+     * @param $inst Entity instance (MailContact)
+     * @param $doc Parent document
+     * @return New element node
+     */
+    public static function toXML(&$inst,$doc) {
+        $node = $doc->createElement(strtolower("MailContact"));
+        
+        $node->appendChild($doc->createTextElement("mail_contact_id",$inst->mailContactId));
+        $node->appendChild($doc->createTextElement("mail_address",$inst->mailAddress));
+        $node->appendChild($doc->createTextElement("firstname",$inst->firstname));
+        $node->appendChild($doc->createTextElement("lastname",$inst->lastname));       
+
+          
+        return $node;
+    }
+    
+    
     /*
       @brief Get entry list
       @param $list Array to receive new instances
@@ -68,13 +94,43 @@ class MailContactMgr
       @param $db iDataBase derived instance
     */
     public static function getAll(&$list,$cond,$db=null){
+       $list = array();
+      
        //obtient la base de donnees courrante
        global $app;
        if(!$db && !$app->getDB($db))
          return false;
       
       //execute la requete
-       //...
+       $query = "SELECT * from mail_contact where $cond";
+       if(!$db->execute($query,$result))
+          return false;
+       
+      //extrait les instances
+       $i=0;
+       while( $result->seek($i,iDatabaseQuery::Origin) ){
+        $inst = new MailContact();
+        MailContactMgr::bindResult($inst,$result);
+        array_push($list,$inst);
+        $i++;
+       }
+       
+       return RESULT_OK();
+    }
+    
+    /*
+      @brief Get single entry
+      @param $inst MailContact instance pointer to initialize
+      @param $cond SQL Select condition
+      @param $db iDataBase derived instance
+    */
+    public static function bindResult(&$inst,$result){
+          $inst->mailContactId = $result->fetchValue("mail_contact_id");
+          $inst->mailAddress = $result->fetchValue("mail_address");
+          $inst->firstname = $result->fetchValue("firstname");
+          $inst->lastname = $result->fetchValue("lastname");          
+
+       return true;
     }
     
     /*
@@ -93,12 +149,9 @@ class MailContactMgr
        $query = "SELECT * from mail_contact where $cond";
        if($db->execute($query,$result)){
             $inst = new MailContact();
-          $inst->mailContactId = $result->fetchValue("mail_contact_id");
-          $inst->mailAddress = $result->fetchValue("mail_address");
-          $inst->firstname = $result->fetchValue("firstname");
-          $inst->lastname = $result->fetchValue("lastname");          
-
-          return true;
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+          return MailContactMgr::bindResult($inst,$result);
        }
        return false;
     }
@@ -115,23 +168,95 @@ class MailContactMgr
        if(!$db && !$app->getDB($db))
          return false;
       
-       if(is_string($id))
-           $id = "'$id'";
-           
       //execute la requete
-       $query = "SELECT * from mail_contact where mail_contact_id=$id";
+       $query = "SELECT * from mail_contact where mail_contact_id=".$db->parseValue($id);
        if($db->execute($query,$result)){
             $inst = new MailContact();
-          $inst->mailContactId = $result->fetchValue("mail_contact_id");
-          $inst->mailAddress = $result->fetchValue("mail_address");
-          $inst->firstname = $result->fetchValue("firstname");
-          $inst->lastname = $result->fetchValue("lastname");          
-
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+             self::bindResult($inst,$result);
           return true;
        }
        return false;
     }
+    
+   /*
+      @brief Insert single entry with generated id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $add_fields Array of columns names/columns values of additional fields
+      @param $db iDataBase derived instance
+    */
+    public static function insert(&$inst,$add_fields=null,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->mailContactId)){
+            $table_name = 'mail_contact';
+            $table_id_name = $table_name.'_id';
+           if(!$db->execute("select * from new_id('$table_name','$table_id_name');",$result))
+              return RESULT(cResult::Failed, cApplication::EntityMissingId);
+           $inst->mailContactId = intval($result->fetchValue("new_id"));
+       }
+       
+      //execute la requete
+       $query = "INSERT INTO mail_contact (";
+       $query .= " mail_contact_id,";
+       $query .= " mail_address,";
+       $query .= " firstname,";
+       $query .= " lastname,";
+       if(is_array($add_fields))
+           $query .= implode(',',array_keys($add_fields)).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       $query .= " VALUES(";
+       $query .= $db->parseValue($inst->mailContactId).",";
+       $query .= $db->parseValue($inst->mailAddress).",";
+       $query .= $db->parseValue($inst->firstname).",";
+       $query .= $db->parseValue($inst->lastname).",";
+       if(is_array($add_fields))
+           $query .= implode(',',$add_fields).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       if($db->execute($query,$result))
+          return true;
 
+       return false;
+    }
+    
+   /*
+      @brief Update single entry by id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $db iDataBase derived instance
+    */
+    public static function update(&$inst,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->mailContactId))
+           return RESULT(cResult::Failed, cApplication::EntityMissingId);
+      
+      //execute la requete
+       $query = "UPDATE mail_contact SET";
+       $query .= " mail_contact_id =".$db->parseValue($inst->mailContactId).",";
+       $query .= " mail_address =".$db->parseValue($inst->mailAddress).",";
+       $query .= " firstname =".$db->parseValue($inst->firstname).",";
+       $query .= " lastname =".$db->parseValue($inst->lastname).",";
+       $query = substr($query,0,-1);//remove last ','
+       $query .= " where mail_contact_id=".$db->parseValue($inst->mailContactId);
+       if($db->execute($query,$result))
+          return true;
+
+       return false;
+    }
+    
    /** @brief Convert name to code */
     public static function nameToCode($name){
         for($i=strlen($name)-1;$i>=0;$i--){
