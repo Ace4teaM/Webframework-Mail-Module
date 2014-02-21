@@ -248,7 +248,7 @@ class MailMessageMgr
            $query .= implode(',',$add_fields).',';
        $query = substr($query,0,-1);//remove last ','
        $query .= ")";
-       
+ 
        if($db->execute($query,$result))
           return true;
 
