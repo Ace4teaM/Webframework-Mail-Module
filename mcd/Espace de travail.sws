@@ -4,7 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{BAE4E1C9-D6AE-4AB2-A789-A45D04ECF55B}" Name="mail" Selected="Yes" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="mail.mcd"/>
+		<Model ID="{BAE4E1C9-D6AE-4AB2-A789-A45D04ECF55B}" Name="mail" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="mail.mcd"/>
+		<Model Expanded="Yes" ID="{D8020711-3C88-4FF5-BDB6-37AE280AE2C9}" Name="Postgres" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="Postgres.pdm"/>
 		<Model Expanded="Yes" ID="{02BB10B0-C9F5-4446-8BEB-F2E8776BB46B}" Loaded="No" Name="mail" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="mail.mld"/>
 		<Model Expanded="Yes" ID="{F264F748-2FC1-4203-9947-310553CD4BD9}" Loaded="No" Name="mail" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="mail.mpd"/>
 		<Model Expanded="Yes" ID="{4CEC0A73-C5E6-4402-AC40-E20B444F96BB}" Loaded="No" Name="mail" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="mail.moo"/>
