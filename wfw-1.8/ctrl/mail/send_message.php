@@ -21,11 +21,25 @@
 */
 
 /*
- * Envoie un message
- * Rôle : Administrateur
- * UC   : mail_send_message
- */
+  Envoie un message
+  
+  Role   : Tous
+  UC     : Send_Message
+  Module : mail
+ 
+  Champs:
+    to      : Adresse du destinataire
+    subject : Sujet du message (Objet)
+    msg     : Corps du message
 
+  Champs complémentaires:
+    from         : Adresse de l'expéditeur
+    from_name    : Nom de l'expéditeur
+    server_adr   : Serveur de messagerie SMTP
+    port_num     : Port du serveur de messagerie
+    notify       : Demander une notification de réception
+    content_type : Type mime du crps du message (ex: text/html, text/plain, ...)
+ */
 class mail_module_send_message_ctrl extends cApplicationCtrl{
     public $fields    = array('to', 'subject', 'msg');
     public $op_fields = array( 'from', 'from_name', 'server_adr', 'port_num', 'notify', 'content_type' );

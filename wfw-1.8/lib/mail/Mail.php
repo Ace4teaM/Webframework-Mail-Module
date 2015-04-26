@@ -20,22 +20,30 @@
     ---------------------------------------------------------------------------------------------------------------------------------------
 */
 
-/**
- * Gestionnaire de courriers électroniques
- * Librairie PHP5
- */
-
 
 require_once("class/bases/iModule.php");
 require_once("class/bases/socket.php");
 require_once("xml_default.php");
 
-    
+
+/**
+ * Gestionnaire de courriers électroniques
+ */
 class MailModule implements iModule
 {
+    //--------------------------------------------------------
+    // Constantes des erreurs
+    // @class MailModule
+    //--------------------------------------------------------
+    
     const MailSended = "MAIL_SENDED";
     const MailSending = "MAIL_SENDING";
     const LoadTemplate = "CANT_LOAD_TEMPLATE";
+    
+    //--------------------------------------------------------
+    // Méthodes
+    // @class MailModule
+    //--------------------------------------------------------
     
     /**
      * @brief Initialise le module
@@ -67,7 +75,7 @@ class MailModule implements iModule
     }
     
     /** 
-     * Envoi un message
+     * @brief Envoi un message
      * 
      * @param MailMessage $msg Instance du message
      * @param MailServer $server Optionnel, instance du serveur
